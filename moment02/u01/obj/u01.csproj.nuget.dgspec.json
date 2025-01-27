@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alfredreintz/Documents/GitHub/moment01/moment02/u01/u01.csproj": {}
+    "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/u01.csproj": {}
   },
   "projects": {
-    "/Users/alfredreintz/Documents/GitHub/moment01/moment02/u01/u01.csproj": {
+    "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/u01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/moment01/moment02/u01/u01.csproj",
+        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/u01.csproj",
         "projectName": "u01",
-        "projectPath": "/Users/alfredreintz/Documents/GitHub/moment01/moment02/u01/u01.csproj",
+        "projectPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/u01.csproj",
         "packagesPath": "/Users/alfredreintz/.nuget/packages/",
-        "outputPath": "/Users/alfredreintz/Documents/GitHub/moment01/moment02/u01/obj/",
+        "outputPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

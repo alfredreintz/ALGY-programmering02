@@ -121,4 +121,21 @@ class Program
 
         return carList;
     }
+
+    public static List<Car> removeCar(List<Car> carList)
+    {
+        Console.WriteLine("dessa bilar finns i din lista");
+        
+        printList(carList);
+        
+        Console.Write("\nväälj en bil att ta bort från listan [0 ångrar]: ");
+        int removeIndex = Convert.ToInt16(Console.ReadLine());
+
+        if (removeIndex != 0)
+        {
+            carList.RemoveAt(removeIndex - 1);
+        }
+
+        return carList;
+    }
 }

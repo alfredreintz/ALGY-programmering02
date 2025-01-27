@@ -9,6 +9,7 @@ public class Car
     private int year;
     private bool forSale;
 
+    // Defaulkonstruktor
     public Car()
     {
     }
@@ -23,6 +24,7 @@ public class Car
         this.ForSale = forSale;
     }
 
+    // Properties
     public String RegNr
     {
         get { return regNr; }
@@ -66,13 +68,17 @@ public class Car
     /// <summary>
     /// Metod som förbereder utskrift av bilinformation
     /// </summary>
-    /// <returns>Den formaterade strängen</returns>
+    /// <returns>Den formatterade strängen</returns>
     public override String ToString()
     {
         return String.Format(
             $"\nBilinformation\nReg; {this.RegNr} {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
     }
 
+    /// <summary>
+    /// Konverterar år till informerande sträng
+    /// </summary>
+    /// <returns>Sträng med årtal</returns>
     public String YearToString()
     {
         if (this.year == -1)
@@ -85,6 +91,10 @@ public class Car
         }
     }
 
+    /// <summary>
+    /// Skapar sträng med information om bilens försäljningsstatus
+    /// </summary>
+    /// <returns>Sträng med information</returns>
     public string ForsaleToString()
     {
         if (this.forSale)
@@ -97,6 +107,10 @@ public class Car
         }
     }
 
+    /// <summary>
+    /// Skapar en sträng med all bilinformation om en bil
+    /// </summary>
+    /// <returns>Sträng med bilinformation</returns>
     public String ToStringList()
     {
         String s = String.Format($"\t{this.RegNr}\t{this.Make}\t{this.Model}\t[{this.YearToString()}]");

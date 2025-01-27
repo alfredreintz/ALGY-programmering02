@@ -5,7 +5,7 @@ namespace u01;
 class Program
 {
     /// <summary>
-    /// startar applikationen
+    /// Startar applikationen
     /// </summary>
     /// <param name="args">standardparameter för main-metoden</param>
     static void Main(string[] args)
@@ -31,13 +31,15 @@ class Program
                     carList = addCar(carList);
                     break;
                 case '3':
+                    removeCar(carList);
                     break;
                 case '4':
+                    emptyList(carList);
                     break;
                 default:
                     break;
             }
-        } while (menuSelection != '0'); // Fortsätter så länge användaren inte avslutar programmet
+        } while (menuSelection != '0');         // Fortsätter så länge användaren inte avslutar programmet
     }
 
     /// <summary>
@@ -67,12 +69,17 @@ class Program
         return Console.ReadKey().KeyChar;
     }
     
+    /// <summary>
+    /// Skriver ut lista med bilinformation
+    /// </summary>
+    /// <param name="carList">lista med bilars information</param>
     public static void printList(List<Car> carList)
     {
         int i = 1;
         
         Console.WriteLine("\n\nNr\tRegNr\tMake\tModell\tÅrsmodell\tTill salu?");
         
+        // Loopar igenom listan med c motsvarande listans objekt
         foreach (Car c in carList)
         {
             Console.Write(i++);
@@ -80,8 +87,14 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Lägger till bil
+    /// </summary>
+    /// <param name="carList">Lista med bilar</param>
+    /// <returns>Lista med bilar</returns>
     public static List<Car> addCar(List<Car> carList)
     {
+        // Frågar och tar emot användarens input
         Console.WriteLine("\n\nAnge information om bilen");
         
         Console.Write("Registreringsnummer: ");
@@ -97,31 +110,42 @@ class Program
         int year = Convert.ToInt32(Console.ReadLine());
         
         Console.Write("Till salu (J/N): ");
-        char ch = Convert.ToChar(Console.Read());
-
+        // Läser endast in första bokstaven
+        char ch = Convert.ToChar(Console.ReadKey().KeyChar);
+        
         bool forSale = false;
+        // Om användaren använt en gemen istället för char men bokstaven stämmer
         if (Char.ToUpper(ch) == 'J')
         {
             forSale = true;
         }
         
+        // Lägger till sist i listan
         carList.Add(new Car(regNr, make, model, year, forSale));
 
         return carList;
     }
     
-    
-    
+    /// <summary>
+    /// Lägger till bilar för testning av programmet
+    /// </summary>
+    /// <returns>Listan med bilar</returns>
     public static List<Car> addCarAtStart()
     {
+        // Skapar en ny lista och lägger till bilar
         List<Car> carList = new List<Car>();
         carList.Add(new Car("ABC123", "Volvo", "V70", 2012, false));
         carList.Add(new Car("FDS434", "Audi", "RS6", 2024, true));
         carList.Add(new Car("LKH999", "Ford", "Fiesta", 2000, false));
-
+        
         return carList;
     }
 
+    /// <summary>
+    /// Tar bort bil
+    /// </summary>
+    /// <param name="carList">Lista med bilar</param>
+    /// <returns>Listan med bilar</returns>
     public static List<Car> removeCar(List<Car> carList)
     {
         Console.WriteLine("dessa bilar finns i din lista");
@@ -133,9 +157,21 @@ class Program
 
         if (removeIndex != 0)
         {
+            // Tar objekt vid specifikt index (1:a bilen för användaren motsvarar index 0 i listan)
             carList.RemoveAt(removeIndex - 1);
         }
 
+        return carList;
+    }
+
+    /// <summary>
+    /// Tar bort alla bilar i listan
+    /// </summary>
+    /// <param name="carList">Lista med bilar</param>
+    /// <returns>Listan med bilar</returns>
+    public static List<Car> emptyList(List<Car> carList)
+    {
+        carList.Clear();
         return carList;
     }
 }

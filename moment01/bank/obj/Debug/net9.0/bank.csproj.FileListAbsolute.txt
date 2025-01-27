@@ -1,0 +1,14 @@
+/Users/alfredreintz/RiderProjects/moment01/bank/bin/Debug/net9.0/bank
+/Users/alfredreintz/RiderProjects/moment01/bank/bin/Debug/net9.0/bank.deps.json
+/Users/alfredreintz/RiderProjects/moment01/bank/bin/Debug/net9.0/bank.runtimeconfig.json
+/Users/alfredreintz/RiderProjects/moment01/bank/bin/Debug/net9.0/bank.dll
+/Users/alfredreintz/RiderProjects/moment01/bank/bin/Debug/net9.0/bank.pdb
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.AssemblyInfoInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.AssemblyInfo.cs
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.dll
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/refint/bank.dll
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.pdb
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/bank.genruntimeconfig.cache
+/Users/alfredreintz/RiderProjects/moment01/bank/obj/Debug/net9.0/ref/bank.dll

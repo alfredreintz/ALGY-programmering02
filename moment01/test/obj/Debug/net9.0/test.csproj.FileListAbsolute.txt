@@ -1,0 +1,14 @@
+/Users/alfredreintz/RiderProjects/moment01/test/bin/Debug/net9.0/test
+/Users/alfredreintz/RiderProjects/moment01/test/bin/Debug/net9.0/test.deps.json
+/Users/alfredreintz/RiderProjects/moment01/test/bin/Debug/net9.0/test.runtimeconfig.json
+/Users/alfredreintz/RiderProjects/moment01/test/bin/Debug/net9.0/test.dll
+/Users/alfredreintz/RiderProjects/moment01/test/bin/Debug/net9.0/test.pdb
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.AssemblyInfoInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.AssemblyInfo.cs
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.dll
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/refint/test.dll
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.pdb
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/test.genruntimeconfig.cache
+/Users/alfredreintz/RiderProjects/moment01/test/obj/Debug/net9.0/ref/test.dll

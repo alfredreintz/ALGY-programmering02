@@ -1,0 +1,14 @@
+/Users/alfredreintz/RiderProjects/moment01/u04/bin/Debug/net9.0/u04
+/Users/alfredreintz/RiderProjects/moment01/u04/bin/Debug/net9.0/u04.deps.json
+/Users/alfredreintz/RiderProjects/moment01/u04/bin/Debug/net9.0/u04.runtimeconfig.json
+/Users/alfredreintz/RiderProjects/moment01/u04/bin/Debug/net9.0/u04.dll
+/Users/alfredreintz/RiderProjects/moment01/u04/bin/Debug/net9.0/u04.pdb
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.AssemblyInfoInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.AssemblyInfo.cs
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.dll
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/refint/u04.dll
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.pdb
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/u04.genruntimeconfig.cache
+/Users/alfredreintz/RiderProjects/moment01/u04/obj/Debug/net9.0/ref/u04.dll

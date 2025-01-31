@@ -8,8 +8,7 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/Users/alfredreintz/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/alfredreintz/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -20,9 +19,6 @@
       "packagesPath": "/Users/alfredreintz/.nuget/packages/",
       "outputPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/u01/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "/Users/alfredreintz/.nuget/NuGet/NuGet.Config"
       ],
@@ -30,6 +26,7 @@
         "net9.0"
       ],
       "sources": {
+        "/usr/local/Cellar/dotnet/9.0.101/libexec/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -69,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/coin.png</SourceFile>
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/coin.png</SourceFile>
   <SourceTime>2013-06-26T15:46:58+02:00</SourceTime>
-  <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/bin/DesktopGL/Content/coin.xnb</DestFile>
-  <DestTime>2025-01-30T22:36:22.1222119+01:00</DestTime>
+  <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/bin/DesktopGL/Content/coin.xnb</DestFile>
+  <DestTime>2025-02-03T12:41:19.9699198+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

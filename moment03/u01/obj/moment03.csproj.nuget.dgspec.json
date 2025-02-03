@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alfredreintz/Documents/GitHub/moment01/moment03/moment03/moment03.csproj": {}
+    "/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/moment03.csproj": {}
   },
   "projects": {
-    "/Users/alfredreintz/Documents/GitHub/moment01/moment03/moment03/moment03.csproj": {
+    "/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/moment03.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/moment01/moment03/moment03/moment03.csproj",
+        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/moment03.csproj",
         "projectName": "moment03",
-        "projectPath": "/Users/alfredreintz/Documents/GitHub/moment01/moment03/moment03/moment03.csproj",
+        "projectPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/moment03.csproj",
         "packagesPath": "/Users/alfredreintz/.nuget/packages/",
-        "outputPath": "/Users/alfredreintz/Documents/GitHub/moment01/moment03/moment03/obj/",
+        "outputPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "/Users/alfredreintz/.nuget/NuGet/NuGet.Config"
         ],
@@ -23,6 +20,7 @@
           "net9.0"
         ],
         "sources": {
+          "/usr/local/Cellar/dotnet/9.0.101/libexec/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/Cellar/dotnet/9.0.101/libexec/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

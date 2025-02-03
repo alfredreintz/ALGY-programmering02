@@ -4,17 +4,17 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/background.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/bullet.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/coin.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/menu.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/menu/exit.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/menu/highscore.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/menu/start.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/mine.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/ship.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/stone.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/Content/tripod.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/background.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/bullet.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/coin.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu/exit.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu/highscore.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu/start.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/mine.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/ship.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/stone.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/tripod.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/SpaceShooter.csproj": {}
+    "/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/SpaceShooter.csproj": {}
   },
   "projects": {
-    "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/SpaceShooter.csproj": {
+    "/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/SpaceShooter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/SpaceShooter.csproj",
+        "projectUniqueName": "/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/SpaceShooter.csproj",
         "projectName": "SpaceShooter",
-        "projectPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/SpaceShooter.csproj",
+        "projectPath": "/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/SpaceShooter.csproj",
         "packagesPath": "/Users/alfredreintz/.nuget/packages/",
-        "outputPath": "/Users/alfredreintz/Documents/GitHub/programmering02/moment02/SpaceShooter/obj/",
+        "outputPath": "/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/alfredreintz/.nuget/NuGet/NuGet.Config"

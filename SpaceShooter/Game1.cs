@@ -12,9 +12,9 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    Texture2D ship_texture;
-    Vector2 ship_vector;
-    Vector2 ship_speed;
+    private Texture2D ship_texture;
+    private Vector2 ship_vector;
+    private Vector2 ship_speed;
 
     public Game1()
     {

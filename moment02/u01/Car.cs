@@ -64,7 +64,7 @@ public class Car
     public override String ToString()
     {
         return String.Format(
-            $"\nBilinformation\nReg; {this.RegNr} {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
+            $"\nBilinformation\nReg; {this.RegNr}, {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
     }
 
     public String YearToString()

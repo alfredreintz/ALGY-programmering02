@@ -1,6 +1,6 @@
 namespace u01;
 
-public class Vehicle
+public abstract class Vehicle
 {
     private String regNr;
     private String make;
@@ -64,7 +64,7 @@ public class Vehicle
     public override String ToString()
     {
         return String.Format(
-            $"\nBilinformation\nReg; {this.RegNr} {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
+            $"\nBilinformation\nReg; {this.RegNr}, {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
     }
 
     public String YearToString()

@@ -4,32 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Ange information om bilen");
+        Car c = new Car("ABC124", "Saab", "95", 2003, false);
+        Vehicle l = new Lorry("ABC123", "Volvo", "V70", 2013, true, 10000);
 
-        Console.Write("Registreringsnummer: ");
-        String regNr = Console.ReadLine();
-
-        Console.Write("Bilmärke: ");
-        String make = Console.ReadLine();
-
-        Console.Write("Modell: ");
-        String model = Console.ReadLine();
-
-        Console.Write("Year: ");
-        int year = Convert.ToInt16(Console.ReadLine());
-
-        Console.Write("Till salu (J/N): ");
-        char ch = Convert.ToChar(Console.ReadLine());
-
-        bool forSale = false;
-
-        if (char.ToUpper(ch) == 'J')
-        {
-            forSale = true;
-        }
-
-        Vehicle c = new Vehicle(regNr, make, model, year, forSale);
         
-        Console.WriteLine("\n" + c.ToString());
+        Console.WriteLine($"\n {l.ToString()}");
+        Console.WriteLine($"\n {c.ToString()}");
     }
 }

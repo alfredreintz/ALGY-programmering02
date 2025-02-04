@@ -4,11 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Car c = new Car("ABC124", "Saab", "95", 2003, false);
-        Vehicle l = new Lorry("ABC123", "Volvo", "V70", 2013, true, 10000);
+        Car c = new Car("ABC123", "Volvo", "V70", 2013, false);
+        Lorry l = new Lorry("ABC124", "Scania", "420", 2000, true, 15000);
 
         
-        Console.WriteLine($"\n {l.ToString()}");
-        Console.WriteLine($"\n {c.ToString()}");
+        Console.WriteLine($"\n {c.ToStringList()}");
+        Console.WriteLine($"\n {l.ToStringList()}");
     }
 }

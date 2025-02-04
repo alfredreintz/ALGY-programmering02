@@ -9,7 +9,7 @@ public class Car : Vehicle
 
     public override String ToStringList()
     {
-        String s = String.Format($"\t{this.RegNr}\t{this.Make}\t{this.Model}\t{this.YearToString()}");
+        String s = String.Format($"\t{this.RegNr}\t{this.Make}\t{this.Model}\t[{this.YearToString()}]");
 
         if (this.ForSale)
         {

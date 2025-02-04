@@ -90,4 +90,6 @@ public abstract class Vehicle
             return "Bilen är inte till salu";
         }
     }
+
+    public abstract String ToStringList();
 }

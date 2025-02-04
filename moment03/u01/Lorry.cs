@@ -8,4 +8,28 @@ public class Lorry : Vehicle
     {
         this.load = load;
     }
+
+    public new String ToString()
+    {
+        String s = base.ToString();
+        s += String.Format($"\nMaxlast: {this.load}kg");
+
+        return s;
+    }
+    
+    public override String ToStringList()
+    {
+        String fs = "";
+        
+        if (this.ForSale)
+        {
+            fs += "\t\tJa";
+        }
+        else
+        {
+           fs += "\t\tNEJ";
+        }
+
+        return String.Format($"\t{this.RegNr}\t{this.Make}\t{this.Model}\t{this.YearToString()}\t{fs}\t{this.load}");
+    }
 }

@@ -1,0 +1,15 @@
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/bin/Debug/net9.0/moment03
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/bin/Debug/net9.0/moment03.deps.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/bin/Debug/net9.0/moment03.runtimeconfig.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/bin/Debug/net9.0/moment03.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/bin/Debug/net9.0/moment03.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.AssemblyInfoInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.AssemblyInfo.cs
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.sourcelink.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/refint/moment03.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/moment03.genruntimeconfig.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/moment03/obj/Debug/net9.0/ref/moment03.dll

@@ -1,0 +1,15 @@
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/bin/Debug/net9.0/u02
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/bin/Debug/net9.0/u02.deps.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/bin/Debug/net9.0/u02.runtimeconfig.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/bin/Debug/net9.0/u02.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/bin/Debug/net9.0/u02.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.AssemblyInfoInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.AssemblyInfo.cs
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.sourcelink.json
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/refint/u02.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/u02.genruntimeconfig.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/moment03/u02/obj/Debug/net9.0/ref/u02.dll

@@ -1,17 +1,20 @@
-namespace u01;
+namespace u02;
 
 public abstract class Vehicle
 {
+    // Medlemsvariabler
     private String regNr;
     private String make;
     private String model;
     private int year;
     private bool forSale;
 
+    // Defaultkonstrktor
     public Vehicle()
     {
     }
 
+    // Konstruktor med fem inmatade värden
     public Vehicle(string regNr, string make, string model, int year, bool forSale)
     {
         this.RegNr = regNr;
@@ -21,6 +24,7 @@ public abstract class Vehicle
         this.ForSale = forSale;
     }
 
+    // Properties
     public String RegNr
     {
         get { return regNr; }
@@ -38,7 +42,7 @@ public abstract class Vehicle
         get { return model; }
         set { model = value; }
     }
-
+    
     public int Year
     {
         get { return year; }
@@ -61,12 +65,20 @@ public abstract class Vehicle
         set { forSale = value; }
     }
     
+    /// <summary>
+    /// Modifierar och skriver över standard-metoden ToString
+    /// </summary>
+    /// <returns>Sträng</returns>
     public override String ToString()
     {
         return String.Format(
             $"\nBilinformation\nReg; {this.RegNr}, {this.Make} {this.Model} [{this.YearToString()}]\n{this.ForsaleToString()}");
     }
 
+    /// <summary>
+    /// Omvandlar årtal i int till sträng
+    /// </summary>
+    /// <returns>Årtal i strängformat</returns>
     public String YearToString()
     {
         if (this.year == -1)
@@ -79,6 +91,10 @@ public abstract class Vehicle
         }
     }
 
+    /// <summary>
+    /// Omvandlar char till utvecklad sträng
+    /// </summary>
+    /// <returns>Sträng</returns>
     public string ForsaleToString()
     {
         if (this.forSale)
@@ -91,5 +107,6 @@ public abstract class Vehicle
         }
     }
 
+    // Skapar metoden men ger inga instruktioner
     public abstract String ToStringList();
 }

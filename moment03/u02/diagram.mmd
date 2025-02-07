@@ -1,0 +1,35 @@
+%%{
+  init: {
+    'theme': 'dark'
+  }
+}%%
+classDiagram
+    class Vehicle {
+        <<abstract>>
+        + String RegNr
+        + String Make
+        + String Model
+        + int Year
+        + bool ForSale
+        + Vehicle()
+        + Vehicle(String regNr, String make, String model, int year, bool forSale)
+        + String YearToString()
+        + String ForSaleToString()
+        + String ToString()
+        + String ToStringList()*
+    }
+
+%% Car har inga medlemmar, vi kan också skriva Car {}
+    class Car {
+        + Car(String regNr, String make, String model, int year, bool forSale)
+        + String ToStringList() 
+    }
+    class Lorry {
+        + int Load
+        + Lorry(String regNr, String make, String model, int year, bool forSale, int load)
+        + String ToStringList()
+    }
+
+%% Ager arvet, Car ärver av Vehicle
+    Vehicle <|-- Lorry
+    Vehicle <|-- Car

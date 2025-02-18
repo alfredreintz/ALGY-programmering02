@@ -12,10 +12,8 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private Texture2D ship_texture;
-    private Vector2 ship_vector;
-    private Vector2 ship_speed;
-
+    private Player player;
+    
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -26,13 +24,7 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
-        ship_vector.X = 380;
-        ship_vector.Y = 400;
-
-        ship_speed.X = 2.5f;
-        ship_speed.Y = 2.5f;
-
+        
         base.Initialize();
     }
 
@@ -41,7 +33,8 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        ship_texture = Content.Load<Texture2D>("ship");
+
+        player = new Player(Content.Load<Texture2D>("ship"), 380, 400, 2.5f, 4.5f);
     }
 
     protected override void Update(GameTime gameTime)
@@ -52,39 +45,7 @@ public class Game1 : Game
 
         // TODO: Add your update logic here
 
-        KeyboardState keyboardState = Keyboard.GetState();
-
-        if (ship_vector.X <= Window.ClientBounds.Width - ship_texture.Width && ship_vector.X >= 0)
-        {
-            if (keyboardState.IsKeyDown(Keys.Right)) ship_vector.X += ship_speed.X;
-            if (keyboardState.IsKeyDown(Keys.Left)) ship_vector.X -= ship_speed.X;
-        }
-
-        if (ship_vector.Y <= Window.ClientBounds.Height - ship_texture.Height && ship_vector.Y >= 0)
-        {
-            if (keyboardState.IsKeyDown(Keys.Down)) ship_vector.Y += ship_speed.Y;
-            if (keyboardState.IsKeyDown(Keys.Up)) ship_vector.Y -= ship_speed.Y;
-        }
-
-        if (ship_vector.X < 0) ship_vector.X = 0;
-        if (ship_vector.X > Window.ClientBounds.Width - ship_texture.Width) ship_vector.X = Window.ClientBounds.Width - ship_texture.Width;
-        if (ship_vector.Y < 0) ship_vector.Y = 0;
-        if (ship_vector.Y > Window.ClientBounds.Height - ship_texture.Height) ship_vector.Y = Window.ClientBounds.Height - ship_texture.Height;
-
-
-        /*ship_vector.X += ship_speed.X;
-
-        if (ship_vector.X > Window.ClientBounds.Width - ship_texture.Width || ship_vector.X < 0)
-        {
-            ship_speed.X *= -1;
-        }
-
-        ship_vector.Y += ship_speed.Y;
-
-        if (ship_vector.Y > Window.ClientBounds.Height - ship_texture.Height || ship_vector.Y < 0)
-        {
-            ship_speed.Y *= -1;
-        }*/
+        player.Update(Window);        
 
         base.Update(gameTime);
     }
@@ -95,7 +56,7 @@ public class Game1 : Game
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
-        _spriteBatch.Draw(ship_texture, ship_vector, Color.White);
+        player.Draw(_spriteBatch);
         _spriteBatch.End();
 
         base.Draw(gameTime);

@@ -7,6 +7,7 @@
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/background.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/bullet.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/coin.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/fonts/arial32.spritefont</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu/exit.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/menu/highscore.png</File>
@@ -17,6 +18,7 @@
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/Content/tripod.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

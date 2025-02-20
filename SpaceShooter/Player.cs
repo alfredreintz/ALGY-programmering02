@@ -8,26 +8,19 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace SpaceShooter;
 
-class Player
+class Player : MovingObject
 {
-    private Texture2D texture;
-    private Vector2 vector;
-    private Vector2 speed;
+    private int points = 0;
 
-    public Player(Texture2D texture, float X, float Y, float speedX, float speedY)
+    public Player(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y, speedX, speedY)
     {
-        this.texture = texture;
-        this.vector.X = X;
-        this.vector.Y = Y;
-        this.speed.X = speedX;
-        this.speed.Y = speedY;
     }
-    
+
     public void Update(GameWindow window)
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
-        
+
         if (vector.X <= window.ClientBounds.Width - texture.Width && vector.X >= 0)
         {
             if (keyboardState.IsKeyDown(Keys.Right)) vector.X += speed.X;
@@ -43,7 +36,8 @@ class Player
         if (vector.X < 0) vector.X = 0;
         if (vector.X > window.ClientBounds.Width - texture.Width) vector.X = window.ClientBounds.Width - texture.Width;
         if (vector.Y < 0) vector.Y = 0;
-        if (vector.Y > window.ClientBounds.Height - texture.Height) vector.Y = window.ClientBounds.Height - texture.Height;
+        if (vector.Y > window.ClientBounds.Height - texture.Height)
+            vector.Y = window.ClientBounds.Height - texture.Height;
     }
 
     public void Draw(SpriteBatch spriteBatch)

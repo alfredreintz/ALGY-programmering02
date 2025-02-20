@@ -49,6 +49,13 @@
 /processorParam:TextureFormat=Color
 /build:coin.png
 
+#begin fonts/arial32.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/arial32.spritefont
+
 #begin menu.png
 /importer:TextureImporter
 /processor:TextureProcessor

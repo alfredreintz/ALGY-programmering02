@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
@@ -11,11 +12,13 @@ namespace SpaceShooter;
 
 public class Game1 : Game
 {
+    
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Player player;
     private List<Enemy> enemies;
-    
+    List<GoldCoin> goldCoins;
+    private Texture2D goldCoinSprite;
     private SpriteFont arial32;
     
     public Game1()
@@ -28,7 +31,7 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-        
+        goldCoins = new List<GoldCoin>();
         base.Initialize();
     }
 
@@ -55,6 +58,7 @@ public class Game1 : Game
             enemies.Add(temp);
         }
 
+        goldCoinSprite = Content.Load<Texture2D>("coin");
     }
 
     protected override void Update(GameTime gameTime)
@@ -64,10 +68,44 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
-
-        player.Update(Window);
         
-        foreach (Enemy e in enemies) e.Update(Window);
+        player.Update(Window);
+
+        foreach (Enemy e in enemies.ToList())
+        {
+            if (e.IsAlive)
+            {
+                if (e.CheckCollision(player)) this.Exit();
+                
+                e.Update(Window);
+            }
+            else enemies.Remove(e);
+        }
+
+        Random random = new Random();
+        int newCoin = random.Next(1, 200);
+        if (newCoin == 1)
+        {
+            int rndX = random.Next(0, Window.ClientBounds.Width - goldCoinSprite.Width);
+            int rndY = random.Next(0, Window.ClientBounds.Height - goldCoinSprite.Height);
+            
+            goldCoins.Add(new GoldCoin(goldCoinSprite, rndX, rndY, gameTime));
+        }
+
+        foreach (GoldCoin gc in goldCoins.ToList())
+        {
+            gc.Update(gameTime);
+
+            if (gc.CheckCollision(player))
+            {
+                goldCoins.Remove(gc);
+                player.Points++;
+            }
+            else
+            {
+                goldCoins.Remove(gc);
+            }
+        }
 
         base.Update(gameTime);
     }
@@ -78,9 +116,14 @@ public class Game1 : Game
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
-        _spriteBatch.DrawString(arial32, "testutskrift", new Vector2(0, 0), Color.White);
+        
         player.Draw(_spriteBatch);
+        
         foreach (Enemy e in enemies) e.Draw(_spriteBatch);
+
+        foreach (GoldCoin gc in goldCoins) gc.Draw(_spriteBatch);
+        _spriteBatch.DrawString(arial32, "Points: " + player.Points, new Vector2(0, 0), Color.White);
+
         _spriteBatch.End();
 
         base.Draw(gameTime);

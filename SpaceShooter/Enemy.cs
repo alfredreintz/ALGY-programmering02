@@ -3,9 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceShooter;
 
-class Enemy : MovingObject
+class Enemy : PhysicalObject
 {
-    private bool isAlive = true;
 
     public Enemy(Texture2D texture, float X, float Y) : base(texture, X, Y, 6F, 0.3F)
     {

@@ -8,12 +8,18 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace SpaceShooter;
 
-class Player : MovingObject
+class Player : PhysicalObject
 {
     private int points = 0;
 
     public Player(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y, speedX, speedY)
     {
+    }
+
+    public int Points
+    {
+        get { return points; }
+        set { points = value; }
     }
 
     public void Update(GameWindow window)

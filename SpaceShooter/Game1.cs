@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,7 +13,6 @@ namespace SpaceShooter;
 
 public class Game1 : Game
 {
-    
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Player player;
@@ -20,7 +20,7 @@ public class Game1 : Game
     List<GoldCoin> goldCoins;
     private Texture2D goldCoinSprite;
     private SpriteFont arial32;
-    
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -42,19 +42,30 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
 
         arial32 = Content.Load<SpriteFont>("fonts/arial32");
-        
-        player = new Player(Content.Load<Texture2D>("ship"), 380, 400, 2.5f, 4.5f);
+
+        player = new Player(Content.Load<Texture2D>("ship"), 380, 400, 2.5f, 4.5f, Content.Load<Texture2D>("bullet"));
 
         enemies = new List<Enemy>();
         Random random = new Random();
         Texture2D tmpSprite = Content.Load<Texture2D>("mine");
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             int rndX = random.Next(0, Window.ClientBounds.Width - tmpSprite.Width);
             int rndY = random.Next(0, Window.ClientBounds.Height / 2);
 
-            Enemy temp = new Enemy(tmpSprite, rndX, rndY);
-            
+            Enemy temp = new Mine(tmpSprite, rndX, rndY);
+
+            enemies.Add(temp);
+        }
+
+        tmpSprite = Content.Load<Texture2D>("tripod");
+        for (int i = 0; i < 5; i++)
+        {
+            int rndX = random.Next(0, Window.ClientBounds.Width - tmpSprite.Width);
+            int rndY = random.Next(0, Window.ClientBounds.Height / 2);
+
+            Enemy temp = new Tripod(tmpSprite, rndX, rndY);
+
             enemies.Add(temp);
         }
 
@@ -68,15 +79,23 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
-        
-        player.Update(Window);
+
+        player.Update(Window, gameTime);
 
         foreach (Enemy e in enemies.ToList())
         {
+            foreach (Bullet b in player.Bullets)
+            {
+                if (e.CheckCollision(b))
+                {
+                    e.IsAlive = false;
+                }
+            }
+            
             if (e.IsAlive)
             {
                 if (e.CheckCollision(player)) this.Exit();
-                
+
                 e.Update(Window);
             }
             else enemies.Remove(e);
@@ -88,18 +107,21 @@ public class Game1 : Game
         {
             int rndX = random.Next(0, Window.ClientBounds.Width - goldCoinSprite.Width);
             int rndY = random.Next(0, Window.ClientBounds.Height - goldCoinSprite.Height);
-            
+
             goldCoins.Add(new GoldCoin(goldCoinSprite, rndX, rndY, gameTime));
         }
 
         foreach (GoldCoin gc in goldCoins.ToList())
         {
-            gc.Update(gameTime);
-
-            if (gc.CheckCollision(player))
+            if (gc.IsAlive)
             {
-                goldCoins.Remove(gc);
-                player.Points++;
+                gc.Update(gameTime);
+
+                if (gc.CheckCollision(player))
+                {
+                    goldCoins.Remove(gc);
+                    player.Points++;
+                }
             }
             else
             {
@@ -116,9 +138,9 @@ public class Game1 : Game
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
-        
+
         player.Draw(_spriteBatch);
-        
+
         foreach (Enemy e in enemies) e.Draw(_spriteBatch);
 
         foreach (GoldCoin gc in goldCoins) gc.Draw(_spriteBatch);

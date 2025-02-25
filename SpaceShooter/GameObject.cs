@@ -20,7 +20,7 @@ class GameObject
         this.vector.Y = Y;
     }
 
-    public void Draw(SpriteBatch spritebatch)
+    public virtual void Draw(SpriteBatch spritebatch)
     {
         spritebatch.Draw(texture, vector, Color.White);
     }
@@ -73,5 +73,11 @@ abstract class PhysicalObject : MovingObject
         Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
             Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));
         return myRect.Intersects(otherRect);
+    }
+
+    public bool IsAlive
+    {
+        get { return isAlive; }
+        set { isAlive = value; }
     }
 }

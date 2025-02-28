@@ -4,32 +4,53 @@
   }
 }%%
 classDiagram
-    class Vehicle {
+    class GameObject {
+        # Texture2D texture
+        # Vector2 vector
+        + float X
+        + float Y
+        + float Width
+        + float Height
+        + GameObject(Texture2D Texture, float X, float Y)
+        + void Draw(spriteBatch: SpriteBatch)
+    }
+
+    class MovingObject {
         <<abstract>>
-        + String RegNr
-        + String Make
-        + String Model
-        + int Year
-        + bool ForSale
-        + Vehicle()
-        + Vehicle(String regNr, String make, String model, int year, bool forSale)
-        + String YearToString()
-        + String ForSaleToString()
-        + String ToString()
-        + String ToStringList()*
+        # Vector2 speed
+        # MovingObject(Texture2D texture, float X, float Y, float speedX, float speedY)
     }
 
-%% Car har inga medlemmar, vi kan också skriva Car {}
-    class Car {
-        + Car(String regNr, String make, String model, int year, bool forSale)
-        + String ToStringList()
-    }
-    class Lorry {
-        + int Load
-        + Lorry(String regNr, String make, String model, int year, bool forSale, int load)
-        + String ToStringList()
+    class PhysicalObject {
+        + bool IsAlive
+        + PhysicalObject(Texture2D texture, float X. float Y, float speedX, float speedY)
+        + isAlive
     }
 
+    class GoldCoin {
+    }
+
+    class Player {
+    }
+
+    class Bullet {
+    }
+
+    class Enemy {
+    }
+
+    class Mine {
+    }
+
+    class Tripod {
+    }
 %% Ager arvet, Car ärver av Vehicle
-    Vehicle <|-- Lorry
-    Vehicle <|-- Car
+    GameObject <|-- MovingObject
+    MovingObject <|-- PhysicalObject
+    PhysicalObject <|--  GoldCoin 
+    PhysicalObject <|--  Player 
+    PhysicalObject <|--  Bullet 
+    PhysicalObject <|--  Enemy 
+    Enemy <|-- Mine
+    Enemy <|-- Tripod
+    

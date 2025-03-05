@@ -24,27 +24,45 @@ classDiagram
     class PhysicalObject {
         + bool IsAlive
         + PhysicalObject(Texture2D texture, float X. float Y, float speedX, float speedY)
-        + isAlive
+        + bool CheckCollision(PhysicalObject other)
     }
 
     class GoldCoin {
+        - double timeToDie
+        + GoldCoin(Texture2D texture, float X, float Y, GameTime gameTime)
+        + void Update(GameTime gameTime)
+    }
+    
+    class Bullet {
+        + Bullet(Texture2D texture, float X, float Y)
+        + void Update()
     }
 
     class Player {
-    }
-
-    class Bullet {
+        - Texture2D BulletTexture
+        - double timeSinceLastBullet
+        + int Points
+        + List<Bullet> Bullets
+        + Player(Texture2D texture, float X, float Y, float speedX, float speedY, Texture2D bulletTexture)
+        + void Update(GameWindow window, GameTime gameTime)
+        + void Draw(SpriteBatch spriteBatch)
     }
 
     class Enemy {
+        Enemy(Texture2D texture, float X, float Y, float speedX, float speedY)
+        void Update(GameWindow window);
     }
 
     class Mine {
+        + Mine(Texture2D texture, float X, float Y)
+        + void Update(GameWindow window)
     }
 
     class Tripod {
+        + Tripod(Texture2D texture, float X, float Y)
+        + void Update(GameWindow window)
     }
-%% Ager arvet, Car ärver av Vehicle
+
     GameObject <|-- MovingObject
     MovingObject <|-- PhysicalObject
     PhysicalObject <|--  GoldCoin 

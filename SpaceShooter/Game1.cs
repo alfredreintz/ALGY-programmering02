@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -31,91 +32,68 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
-        spriteBatch = new SpriteBatch(GraphicsDevice); 
+        spriteBatch = new SpriteBatch(GraphicsDevice);
         GameElements.LoadContent(Content, Window);
+        
     }
 
     protected override void UnloadContent()
     {
     }
-    
+
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIl,ö.ndex.One).Buttons.Back == ButtonState.Pressed ||
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+            this.Exit();
 
         // TODO: Add your update logic here
 
-        player.Update(Window, gameTime);
-
-        foreach (Enemy e in enemies.ToList())
+        switch (GameElements.currentState)
         {
-            foreach (Bullet b in player.Bullets)
-            {
-                if (e.CheckCollision(b))
-                {
-                    e.IsAlive = false;
-                }
-            }
-
-            if (e.IsAlive)
-            {
-                if (e.CheckCollision(player)) this.Exit();
-
-                e.Update(Window);
-            }
-            else enemies.Remove(e);
+            case GameElements.State.Run:
+                GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
+                break;
+            case GameElements.State.HighScore:
+                GameElements.currentState = GameElements.HighScoreUpdate();
+                break;
+            case GameElements.State.Quit:
+                this.Exit();
+                break;
+            default:
+                GameElements.currentState = GameElements.MenuUpdate();
+                break;
+                
         }
-
-        Random random = new Random();
-        int newCoin = random.Next(1, 200);
-        if (newCoin == 1)
-        {
-            int rndX = random.Next(0, Window.ClientBounds.Width - goldCoinSprite.Width);
-            int rndY = random.Next(0, Window.ClientBounds.Height - goldCoinSprite.Height);
-
-            goldCoins.Add(new GoldCoin(goldCoinSprite, rndX, rndY, gameTime));
-        }
-
-        foreach (GoldCoin gc in goldCoins.ToList())
-        {
-            if (gc.IsAlive)
-            {
-                gc.Update(gameTime);
-
-                if (gc.CheckCollision(player))
-                {
-                    goldCoins.Remove(gc);
-                    player.Points++;
-                }
-            }
-            else
-            {
-                goldCoins.Remove(gc);
-            }
-        }
-
+        
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
+        
+        spriteBatch.Begin();
 
-        // TODO: Add your drawing code here
-        _spriteBatch.Begin();
-
-        player.Draw(_spriteBatch);
-
-        foreach (Enemy e in enemies) e.Draw(_spriteBatch);
-
-        foreach (GoldCoin gc in goldCoins) gc.Draw(_spriteBatch);
-        _spriteBatch.DrawString(arial32, "Points: " + player.Points, new Vector2(0, 0), Color.White);
-
-        _spriteBatch.End();
-
+        switch (GameElements.currentState)
+        {
+            case GameElements.State.Run:
+                GameElements.RunDraw(spriteBatch);
+                break;
+            case GameElements.State.HighScore:
+                GameElements.HighScoreDraw(spriteBatch);
+                break;
+            case GameElements.State.Quit:
+                this.Exit();
+                break;
+            default:
+                GameElements.MenuDraw(spriteBatch);
+                break;
+        }
+        
+        spriteBatch.End();
+        
         base.Draw(gameTime);
     }
 }

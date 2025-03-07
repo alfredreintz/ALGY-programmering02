@@ -15,7 +15,7 @@ class Player : PhysicalObject
     private int points = 0;
     private List<Bullet> bullets;
     private Texture2D bulletTexture;
-    private double timeSinceLastShot = 0;
+    private double timeSinceLastBullet = 0;
 
     public Player(Texture2D texture, float X, float Y, float speedX, float speedY, Texture2D bulletTexture) : base(
         texture, X, Y, speedX, speedY)
@@ -39,6 +39,7 @@ class Player : PhysicalObject
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
+        if (keyboardState.IsKeyDown(Keys.E)) this.isAlive = false;
 
         if (vector.X <= window.ClientBounds.Width - texture.Width && vector.X >= 0)
         {
@@ -60,13 +61,13 @@ class Player : PhysicalObject
 
         if (keyboardState.IsKeyDown(Keys.Space))
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastShot + 200)
+            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 200)
             {
                 Bullet temp = new Bullet(bulletTexture, vector.X + texture.Width / 2, vector.Y);
             
                 bullets.Add(temp);
             
-                timeSinceLastShot = gameTime.TotalGameTime.TotalMilliseconds;
+                timeSinceLastBullet = gameTime.TotalGameTime.TotalMilliseconds;
             }   
         }
 
@@ -85,6 +86,19 @@ class Player : PhysicalObject
     {
         spriteBatch.Draw(texture, vector, Color.White);
         foreach (var b in bullets) b.Draw(spriteBatch);
+    }
+    
+    public void Reset(float X, float Y, float speedX, float speedY)
+    {
+        vector.X = X;
+        vector.Y = Y;
+        speed.X = speedX;
+        speed.Y = speedY;
+
+        bullets.Clear();
+        timeSinceLastBullet = 0;
+        points = 0;
+        isAlive = true;
     }
 }
 

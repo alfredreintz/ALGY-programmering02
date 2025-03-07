@@ -70,6 +70,8 @@ static class GameElements
 
             enemies.Add(temp);
         }
+        
+        arial32 = content.Load<SpriteFont>("fonts/arial32");
 
         goldCoinSprite = content.Load<Texture2D>("coin");
     }
@@ -100,6 +102,7 @@ static class GameElements
                 if (e.CheckCollision(b))
                 {
                     e.IsAlive = false;
+                    player.Points++;
                 }
             }
 
@@ -140,9 +143,13 @@ static class GameElements
             }
         }
 
-        if (!player.IsAlive) return State.Menu;
+        if (!player.IsAlive)
+        {
+            Reset(window, content);
+            return State.Menu;
+        }
 
-        return State.Menu;
+        return State.Run;
     }
 
     public static void RunDraw(SpriteBatch spriteBatch)
@@ -163,5 +170,31 @@ static class GameElements
     public static void HighScoreDraw(SpriteBatch spriteBatch)
     {
         
+    }
+
+    private static void Reset(GameWindow window, ContentManager content)
+    {
+        player.Reset(380, 400, 2.5f, 4.5f);
+        
+        enemies.Clear();
+        Random random = new Random();
+
+        Texture2D tmpSprite = content.Load<Texture2D>("mine");
+
+        for (int i = 0; i < 5; i++)
+        {
+            int rndX = random.Next(0, window.ClientBounds.Width - tmpSprite.Width);
+            int rndY = random.Next(0, window.ClientBounds.Height / 2);
+            Mine temp = new Mine(tmpSprite, rndX, rndY);
+            enemies.Add(temp);
+        }
+        tmpSprite = content.Load<Texture2D>("tripod");
+        for (int i = 0; i < 5; i++)
+        {
+            int rndX = random.Next(0, window.ClientBounds.Width - tmpSprite.Width);
+            int rndY = random.Next(0, window.ClientBounds.Height / 2);
+            Tripod temp = new Tripod(tmpSprite, rndX, rndY);
+            enemies.Add(temp);
+        }
     }
 }

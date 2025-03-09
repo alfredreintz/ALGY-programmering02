@@ -69,7 +69,7 @@ class Menu
         menu.Add(temp);
     }
 
-    public int update(GameTime gameTime)
+    public int Update(GameTime gameTime)
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
@@ -90,6 +90,8 @@ class Menu
                     selected = menu.Count - 1;
                 }
             }
+
+            lastChange = gameTime.TotalGameTime.TotalMilliseconds;
         }
 
         if (keyboardState.IsKeyDown(Keys.Enter))

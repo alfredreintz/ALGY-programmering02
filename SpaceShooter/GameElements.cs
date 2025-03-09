@@ -16,11 +16,13 @@ static class GameElements
 {
     private static Texture2D menuSprite;
     private static Vector2 menuPos;
+    private static Menu menu;
     private static Player player;
     private static List<Enemy> enemies;
     private static List<GoldCoin> goldCoins;
     private static Texture2D goldCoinSprite;
     private static SpriteFont arial32;
+    private static Background Background;
 
     public enum State
     {
@@ -40,6 +42,10 @@ static class GameElements
     public static void LoadContent(ContentManager content, GameWindow window)
     {
         // TODO: use this.Content to load your game content here
+        menu = new Menu((int)State.Menu);
+        menu.AddItem(content.Load<Texture2D>("menu/start"), (int)State.Run);
+        menu.AddItem(content.Load<Texture2D>("menu/highscore"), (int)State.HighScore);
+        menu.AddItem(content.Load<Texture2D>("menu/exit"), (int)State.Quit);
 
         menuSprite = content.Load<Texture2D>("menu");
         menuPos.X = window.ClientBounds.Width / 2 - menuSprite.Width / 2;
@@ -74,25 +80,25 @@ static class GameElements
         arial32 = content.Load<SpriteFont>("fonts/arial32");
 
         goldCoinSprite = content.Load<Texture2D>("coin");
+
+        Background = new Background(content.Load<Texture2D>("background"), window);
     }
 
-    public static State MenuUpdate()
+    public static State MenuUpdate(GameTime gameTime)
     {
-        KeyboardState keyboardState = Keyboard.GetState();
-        if (keyboardState.IsKeyDown(Keys.S)) return State.Run;
-        if (keyboardState.IsKeyDown(Keys.H)) return State.HighScore;
-        if (keyboardState.IsKeyDown(Keys.A)) return State.Quit;
-
-        return State.Menu;
+        return (State)menu.Update(gameTime);
     }
 
     public static void MenuDraw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(menuSprite, menuPos, Color.White);
+        Background.Draw(spriteBatch);
+        menu.Draw(spriteBatch);
     }
 
     public static State RunUpdate(ContentManager content, GameWindow window, GameTime gameTime)
     {
+        Background.Update(window);
+        
         player.Update(window, gameTime);
 
         foreach (Enemy e in enemies.ToList())
@@ -154,6 +160,7 @@ static class GameElements
 
     public static void RunDraw(SpriteBatch spriteBatch)
     {
+        Background.Draw(spriteBatch);
         player.Draw(spriteBatch);
         foreach (Enemy e in enemies) e.Draw(spriteBatch);
         foreach (GoldCoin gc in goldCoins) gc.Draw(spriteBatch);

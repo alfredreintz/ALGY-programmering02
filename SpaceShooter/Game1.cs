@@ -40,8 +40,7 @@ public class Game1 : Game
     protected override void UnloadContent()
     {
     }
-
-
+    
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
@@ -62,7 +61,7 @@ public class Game1 : Game
                 this.Exit();
                 break;
             default:
-                GameElements.currentState = GameElements.MenuUpdate();
+                GameElements.currentState = GameElements.MenuUpdate(gameTime);
                 break;
                 
         }

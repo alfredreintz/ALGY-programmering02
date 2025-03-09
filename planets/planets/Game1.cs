@@ -27,8 +27,8 @@ public class Game1 : Game
 
         // Ändrar skärmstorleken till helskärm
         _graphics.IsFullScreen = false;
-        _graphics.PreferredBackBufferWidth = 1000;
-        _graphics.PreferredBackBufferHeight = 700;
+        _graphics.PreferredBackBufferWidth = 1600;
+        _graphics.PreferredBackBufferHeight = 1060;
         _graphics.ApplyChanges();
 
         basePlanetSpeed.Y = 0;

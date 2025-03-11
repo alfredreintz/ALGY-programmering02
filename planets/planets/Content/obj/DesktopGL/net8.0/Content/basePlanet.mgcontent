@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/planets/planets/Content/basePlanet.png</SourceFile>
-  <SourceTime>2025-03-05T17:20:41.3361535+01:00</SourceTime>
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/planets/planets/Content/../../../../../../Downloads/basePlanet.png</SourceFile>
+  <SourceTime>2025-03-10T16:55:19.9511584+01:00</SourceTime>
   <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/planets/planets/Content/bin/DesktopGL/Content/basePlanet.xnb</DestFile>
-  <DestTime>2025-03-05T17:30:38.6899123+01:00</DestTime>
+  <DestTime>2025-03-10T16:58:17.5456377+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

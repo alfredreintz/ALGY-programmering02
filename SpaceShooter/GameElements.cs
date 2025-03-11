@@ -23,20 +23,25 @@ static class GameElements
     private static Texture2D goldCoinSprite;
     private static SpriteFont arial32;
     private static Background Background;
+    private static SpriteFont myFont;
+    private static HighScore highscore;
 
     public enum State
     {
         Menu,
         Run,
         HighScore,
+        PrintHighScore,
+        EnterHighScore,
         Quit
     };
-
+    
     public static State currentState;
 
     public static void Initialize()
     {
         goldCoins = new List<GoldCoin>();
+        highscore = new HighScore(10);
     }
 
     public static void LoadContent(ContentManager content, GameWindow window)
@@ -82,6 +87,8 @@ static class GameElements
         goldCoinSprite = content.Load<Texture2D>("coin");
 
         Background = new Background(content.Load<Texture2D>("background"), window);
+        
+        myFont = content.Load<SpriteFont>("fonts/arial32");
     }
 
     public static State MenuUpdate(GameTime gameTime)
@@ -167,16 +174,40 @@ static class GameElements
         spriteBatch.DrawString(arial32, "Points: " + player.Points, new Vector2(0, 0), Color.White);
     }
 
-    public static State HighScoreUpdate()
+    public static State HighScoreUpdate(GameTime gameTime)
     {
         KeyboardState keyboardState = Keyboard.GetState();
         if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
+        
+        switch (currentState)
+        {
+            case State.EnterHighScore:
+                if (highscore.EnterUpdate(gameTime, 10)) currentState = State.PrintHighScore;
+                break;
+            default:
+                keyboardState = Keyboard.GetState();
+                if (keyboardState.IsKeyDown(Keys.O))
+                {
+                    currentState = State.EnterHighScore;
+                    return State.PrintHighScore;
+                }
+                break;
+        }
+        
         return State.HighScore;
     }
 
     public static void HighScoreDraw(SpriteBatch spriteBatch)
-    {
-        
+    {   
+        switch (currentState)
+        {
+            case State.EnterHighScore:
+                highscore.EnterDraw(spriteBatch, myFont);
+                break;
+            default:
+                highscore.PrintDraw(spriteBatch, myFont);
+                break;
+        }
     }
 
     private static void Reset(GameWindow window, ContentManager content)

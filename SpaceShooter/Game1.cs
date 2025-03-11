@@ -16,6 +16,7 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
+    
 
     public Game1()
     {
@@ -34,7 +35,6 @@ public class Game1 : Game
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
         GameElements.LoadContent(Content, Window);
-        
     }
 
     protected override void UnloadContent()
@@ -44,7 +44,7 @@ public class Game1 : Game
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Keyboard.GetState().IsKeyDown(Keys.P))
             this.Exit();
 
         // TODO: Add your update logic here
@@ -55,7 +55,7 @@ public class Game1 : Game
                 GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
                 break;
             case GameElements.State.HighScore:
-                GameElements.currentState = GameElements.HighScoreUpdate();
+                GameElements.currentState = GameElements.HighScoreUpdate(gameTime);
                 break;
             case GameElements.State.Quit:
                 this.Exit();
@@ -63,7 +63,6 @@ public class Game1 : Game
             default:
                 GameElements.currentState = GameElements.MenuUpdate(gameTime);
                 break;
-                
         }
         
         base.Update(gameTime);

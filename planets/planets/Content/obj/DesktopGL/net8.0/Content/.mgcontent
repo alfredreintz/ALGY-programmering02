@@ -4,9 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/planets/planets/Content/basePlanet.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/planets/planets/Content/../../../../../../Downloads/basePlanet.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
+    <File>basePlanet.png</File>
   </DestFiles>
 </SourceFileCollection>

@@ -25,14 +25,15 @@ static class GameElements
     private static Background Background;
     private static SpriteFont myFont;
     private static HighScore highscore;
+    private static int highscorePoints;
 
     public enum State
     {
         Menu,
         Run,
-        HighScore,
         PrintHighScore,
         EnterHighScore,
+        About,
         Quit
     };
     
@@ -47,9 +48,12 @@ static class GameElements
     public static void LoadContent(ContentManager content, GameWindow window)
     {
         // TODO: use this.Content to load your game content here
+        highscore.LoadFromFile("highscore.txt");
+        
         menu = new Menu((int)State.Menu);
         menu.AddItem(content.Load<Texture2D>("menu/start"), (int)State.Run);
-        menu.AddItem(content.Load<Texture2D>("menu/highscore"), (int)State.HighScore);
+        menu.AddItem(content.Load<Texture2D>("menu/highscore"), (int)State.PrintHighScore);
+        menu.AddItem(content.Load<Texture2D>("menu/om"), (int)State.About);
         menu.AddItem(content.Load<Texture2D>("menu/exit"), (int)State.Quit);
 
         menuSprite = content.Load<Texture2D>("menu");
@@ -89,6 +93,11 @@ static class GameElements
         Background = new Background(content.Load<Texture2D>("background"), window);
         
         myFont = content.Load<SpriteFont>("fonts/arial32");
+    }
+
+    public static void UnloadContent()
+    {
+        highscore.SaveToFile("highscore.txt");
     }
 
     public static State MenuUpdate(GameTime gameTime)
@@ -158,11 +167,28 @@ static class GameElements
 
         if (!player.IsAlive)
         {
+            highscorePoints = player.Points;
             Reset(window, content);
-            return State.Menu;
+            return State.EnterHighScore;
         }
 
         return State.Run;
+    }
+    
+    public static State AboutUpdate()
+    {
+        KeyboardState keyboardState = Keyboard.GetState();
+        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
+        
+        return State.About;
+    }
+
+    public static void AboutDraw(SpriteBatch spriteBatch)
+    {
+        spriteBatch.DrawString(arial32, "Hej och velkommen till SpaceShooter", new Vector2(0, 0), Color.White);
+        spriteBatch.DrawString(arial32, "Detta spel gar ut po att samla so mycket guldmynt \nsom mojligt utan att bli mordad av fienden", new Vector2(0, 100), Color.White);
+        spriteBatch.DrawString(arial32, "Med hjelp av piltangenterna kan du rora dig fritt. \nFor att skjuta ned fienden anvends mellanslag", new Vector2(0, 200), Color.White);
+        spriteBatch.DrawString(arial32, "Lycka till!", new Vector2(0, 300), Color.White);
     }
 
     public static void RunDraw(SpriteBatch spriteBatch)
@@ -178,23 +204,14 @@ static class GameElements
     {
         KeyboardState keyboardState = Keyboard.GetState();
         if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
-        
-        switch (currentState)
+
+        if (currentState == State.EnterHighScore)
         {
-            case State.EnterHighScore:
-                if (highscore.EnterUpdate(gameTime, 10)) currentState = State.PrintHighScore;
-                break;
-            default:
-                keyboardState = Keyboard.GetState();
-                if (keyboardState.IsKeyDown(Keys.O))
-                {
-                    currentState = State.EnterHighScore;
-                    return State.PrintHighScore;
-                }
-                break;
+            if (highscore.EnterUpdate(gameTime, highscorePoints)) currentState = State.PrintHighScore;
+            else return State.EnterHighScore;
         }
         
-        return State.HighScore;
+        return State.PrintHighScore;
     }
 
     public static void HighScoreDraw(SpriteBatch spriteBatch)

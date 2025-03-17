@@ -106,8 +106,8 @@ class Menu
     {
         for (int i = 0; i < menu.Count; i++)
         {
-            if (i == selected) spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.RosyBrown);
-            else spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.White);
+            if (i == selected) spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.Yellow);
+            else spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.LightGray);
         }
     }
 }

@@ -68,6 +68,13 @@ public class Game1 : Game
 
         // TODO: Add your update logic here
         
+        float revertPositionX = 
+        
+        foreach (Planet planet in planets)
+        {
+            planet.Update(Window);
+        }
+        
         for (int i = 0; i < planets.Count; i++)
         {
             for (int j = i + 1; j < planets.Count; j++) // Start from i + 1 to avoid duplicate checks
@@ -95,11 +102,6 @@ public class Game1 : Game
                     planets[j].Update(Window);
                 }
             }
-        }
-        
-        foreach (Planet planet in planets)
-        {
-            planet.Update(Window);
         }
 
         base.Update(gameTime);

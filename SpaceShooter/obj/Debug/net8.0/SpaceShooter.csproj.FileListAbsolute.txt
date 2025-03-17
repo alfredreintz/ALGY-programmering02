@@ -73,3 +73,4 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/obj/Debug/net8.0/SpaceShooter.genruntimeconfig.cache
 /Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/obj/Debug/net8.0/ref/SpaceShooter.dll
 /Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/bin/Debug/net8.0/Content/fonts/arial32.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/SpaceShooter/bin/Debug/net8.0/Content/menu/om.xnb

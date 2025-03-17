@@ -17,7 +17,6 @@ public class Game1 : Game
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
     
-
     public Game1()
     {
         graphics = new GraphicsDeviceManager(this);
@@ -36,9 +35,10 @@ public class Game1 : Game
         spriteBatch = new SpriteBatch(GraphicsDevice);
         GameElements.LoadContent(Content, Window);
     }
-
+    
     protected override void UnloadContent()
     {
+        GameElements.UnloadContent();
     }
     
     protected override void Update(GameTime gameTime)
@@ -54,8 +54,14 @@ public class Game1 : Game
             case GameElements.State.Run:
                 GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
                 break;
-            case GameElements.State.HighScore:
+            case GameElements.State.PrintHighScore:
                 GameElements.currentState = GameElements.HighScoreUpdate(gameTime);
+                break;
+            case GameElements.State.EnterHighScore:
+                GameElements.currentState = GameElements.HighScoreUpdate(gameTime);
+                break;
+            case GameElements.State.About:
+                GameElements.currentState = GameElements.AboutUpdate();
                 break;
             case GameElements.State.Quit:
                 this.Exit();
@@ -79,8 +85,14 @@ public class Game1 : Game
             case GameElements.State.Run:
                 GameElements.RunDraw(spriteBatch);
                 break;
-            case GameElements.State.HighScore:
+            case GameElements.State.PrintHighScore:
                 GameElements.HighScoreDraw(spriteBatch);
+                break;
+            case GameElements.State.EnterHighScore:
+                GameElements.HighScoreDraw(spriteBatch);
+                break;
+            case GameElements.State.About:
+                GameElements.AboutDraw(spriteBatch);
                 break;
             case GameElements.State.Quit:
                 this.Exit();

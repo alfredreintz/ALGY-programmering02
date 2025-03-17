@@ -1,0 +1,6 @@
+AAA:9
+CBB:7
+YYY:2
+YYY:1
+YYY:1
+YYY:0

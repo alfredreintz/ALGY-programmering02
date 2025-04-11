@@ -42,7 +42,7 @@ class MenuItem
     }
 }
 
-class Menu
+class   Menu
 {
     private List<MenuItem> menu;
     private int selected = 0;

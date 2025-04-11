@@ -16,7 +16,7 @@ class BackgroundSprite : GameObject
     public BackgroundSprite(Texture2D texture, float X, float Y) : base(texture, X, Y)
     {
     }
-
+    
     public void Update(GameWindow window, int nrBackgroundsY)
     {
         vector.Y += 2f;
@@ -44,7 +44,7 @@ class Background
         nrBackgroundsY = (int)Math.Ceiling(tmpY) + 1;
 
         background = new BackgroundSprite[nrBackgroundsX, nrBackgroundsY];
-
+        
         for (int i = 0; i < nrBackgroundsX; i++)
         {
             for (int j = 0; j < nrBackgroundsY; j++)

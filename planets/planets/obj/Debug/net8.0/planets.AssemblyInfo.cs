@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("planets")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a034f577d4c0cfa7f2d87d63f71003b88c6b17d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+260e8e109577342577f73610080b3efed4ed5396")]
 [assembly: System.Reflection.AssemblyProductAttribute("planets")]
 [assembly: System.Reflection.AssemblyTitleAttribute("planets")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

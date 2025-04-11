@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bullet.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkLeft1.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkLeft2.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkLeft3.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkLeft4.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkRight1.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkRight2.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkRight3.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkRight4.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/exit.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/highscore.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/start.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

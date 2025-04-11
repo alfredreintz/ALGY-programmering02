@@ -1,0 +1,55 @@
+%%{
+  init: {
+    'theme': 'dark'
+  }
+}%%
+classDiagram
+    class GameObject {
+        # Texture2D texture
+        # Vector2 vector
+        + float X
+        + float Y
+        + float Width
+        + float Height
+        + GameObject(Texture2D Texture, float X, float Y)
+        + void Draw(spriteBatch: SpriteBatch)
+    }
+
+    class MovingObject {
+        <<abstract>>
+        # Vector2 speed
+        # MovingObject(Texture2D texture, float X, float Y, float speedX, float speedY)
+    }
+
+    class PhysicalObject {
+        + bool IsAlive
+        + PhysicalObject(Texture2D texture, float X. float Y, float speedX, float speedY)
+        + bool CheckCollision(PhysicalObject other)
+    }
+
+    class Player {
+        - Texture2D BulletTexture
+        - double timeSinceLastBullet
+        + int Points
+        + List<Bullet> Bullets
+        + Player(Texture2D texture, float X, float Y, float speedX, float speedY, Texture2D bulletTexture)
+        + void Update(GameWindow window, GameTime gameTime)
+        + void Draw(SpriteBatch spriteBatch)
+    }
+
+    class Enemy {
+        Enemy(Texture2D texture, float X, float Y, float speedX, float speedY)
+        void Update(GameWindow window);
+    }
+
+    class Mine {
+        + Mine(Texture2D texture, float X, float Y)
+        + void Update(GameWindow window)
+    }
+
+    GameObject <|-- MovingObject
+    MovingObject <|-- PhysicalObject
+    PhysicalObject <|--  Player
+    PhysicalObject <|--  Enemy
+    Enemy <|-- Mine
+    

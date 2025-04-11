@@ -68,8 +68,6 @@ public class Game1 : Game
 
         // TODO: Add your update logic here
         
-        float revertPositionX = 
-        
         foreach (Planet planet in planets)
         {
             planet.Update(Window);

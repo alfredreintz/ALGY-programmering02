@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/character/characterWalkLeft2.png</SourceFile>
-  <SourceTime>2025-04-10T17:41:09.2461336+02:00</SourceTime>
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/../../../../../../Downloads/characterWalkLeft2.png</SourceFile>
+  <SourceTime>2025-04-15T17:06:37.063996+02:00</SourceTime>
   <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bin/DesktopGL/Content/character/characterWalkLeft2.xnb</DestFile>
-  <DestTime>2025-04-11T12:24:14.4133764+02:00</DestTime>
+  <DestTime>2025-04-15T18:52:05.6898171+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
@@ -18,7 +19,11 @@ static class GameElements
     private static Vector2 menuPos;
     private static Menu menu;
     private static Player player;
-
+    private static List<Texture2D> characterTexturesLeft = new List<Texture2D>();
+    private static List<Texture2D> characterTexturesRight = new List<Texture2D>();
+    private static Raft raft;
+    private static Texture2D background;
+    
     public enum State
     {
         Menu,
@@ -48,7 +53,18 @@ static class GameElements
         menuPos.X = window.ClientBounds.Width / 2 - menuSprite.Width / 2;
         menuPos.Y = window.ClientBounds.Height / 2 - menuSprite.Height / 2;
 
-        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 280, 400, 2.5f, 4.5f, content.Load<Texture2D>("bullet"));
+        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 280, 400, 9f, 20f, 70f, content.Load<Texture2D>("bullet"));
+        raft = new Raft(content.Load<Texture2D>("raft" ), window.ClientBounds.Width / 2 - 616 / 2, window.ClientBounds.Height - 150, 0, 0);
+        
+        characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft1"));
+        characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft2"));
+        characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft3"));
+        characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft4"));
+        
+        characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight1"));
+        characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight2"));
+        characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight3"));
+        characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight4"));
     }
 
     public static void UnloadContent()
@@ -84,9 +100,11 @@ static class GameElements
     {
     }
 
-    public static void RunDraw(SpriteBatch spriteBatch)
+    public static void RunDraw(SpriteBatch spriteBatch, GameTime gameTime)
     {
         player.Draw(spriteBatch);
+        player.Walkcycle(gameTime, characterTexturesLeft, characterTexturesRight);
+        raft.Draw(spriteBatch);
     }
 
     /* public static State HighScoreUpdate(GameTime gameTime)

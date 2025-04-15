@@ -20,6 +20,9 @@ public class Game1 : Game
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        _graphics.PreferredBackBufferWidth = 1250;
+        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.ApplyChanges();
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
@@ -79,7 +82,7 @@ public class Game1 : Game
         switch (GameElements.currentState)
         {
             case GameElements.State.Run:
-                GameElements.RunDraw(spriteBatch);
+                GameElements.RunDraw(spriteBatch, gameTime);
                 break;
             case GameElements.State.Quit:
                 this.Exit();

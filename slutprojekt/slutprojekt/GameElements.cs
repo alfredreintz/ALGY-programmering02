@@ -22,7 +22,8 @@ static class GameElements
     private static List<Texture2D> characterTexturesLeft = new List<Texture2D>();
     private static List<Texture2D> characterTexturesRight = new List<Texture2D>();
     private static Raft raft;
-    private static Texture2D background;
+    private static GameObject background;
+    private static Sea sea;
     
     public enum State
     {
@@ -55,6 +56,8 @@ static class GameElements
 
         player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 280, 400, 9f, 20f, 70f, content.Load<Texture2D>("bullet"));
         raft = new Raft(content.Load<Texture2D>("raft" ), window.ClientBounds.Width / 2 - 616 / 2, window.ClientBounds.Height - 150, 0, 0);
+        background = new GameObject(content.Load<Texture2D>("sky"), 0, 0);
+        sea = new Sea(content.Load<Texture2D>("sea" ), 0, window.ClientBounds.Height - 80, 0, 0);
         
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft1"));
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft2"));
@@ -84,7 +87,9 @@ static class GameElements
     public static State RunUpdate(ContentManager content, GameWindow window, GameTime gameTime)
     {
         player.Update(window, gameTime);
-
+        
+        player.checkTouchable(raft.X, raft.Y, raft.Width, raft.Height);
+        
         return State.Run;
     }
     
@@ -102,37 +107,12 @@ static class GameElements
 
     public static void RunDraw(SpriteBatch spriteBatch, GameTime gameTime)
     {
+        background.Draw(spriteBatch);
         player.Draw(spriteBatch);
         player.Walkcycle(gameTime, characterTexturesLeft, characterTexturesRight);
         raft.Draw(spriteBatch);
+        // sea.Draw(spriteBatch);
     }
-
-    /* public static State HighScoreUpdate(GameTime gameTime)
-    {
-        KeyboardState keyboardState = Keyboard.GetState();
-        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
-
-        if (currentState == State.EnterHighScore)
-        {
-            if (highscore.EnterUpdate(gameTime, highscorePoints)) currentState = State.PrintHighScore;
-            else return State.EnterHighScore;
-        }
-        
-        return State.PrintHighScore;
-    } */
-
-    /* public static void HighScoreDraw(SpriteBatch spriteBatch)
-    {   
-        switch (currentState)
-        {
-            case State.EnterHighScore:
-                highscore.EnterDraw(spriteBatch, myFont);
-                break;
-            default:
-                highscore.PrintDraw(spriteBatch, myFont);
-                break;
-        }
-    } */
 
     private static void Reset(GameWindow window, ContentManager content)
     {

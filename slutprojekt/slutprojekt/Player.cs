@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
+using System.Text.Unicode;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -48,7 +49,6 @@ class Player : PhysicalObject
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
-
         if (keyboardState.IsKeyDown(Keys.E)) this.isAlive = false;
 
         if (vector.X <= window.ClientBounds.Width - texture.Width && vector.X >= 0)
@@ -77,34 +77,18 @@ class Player : PhysicalObject
                 movingDirection = '0';
             }
         }
-
-        if (vector.Y <= window.ClientBounds.Height - texture.Height && vector.Y >= 0)
+        
+        if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
         {
-            if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
-            {
-                isJumping = true;
-            }
-
-            if (isJumping)
-            {
-                gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                Console.WriteLine(gravityConstant * gravityDeltaTime);
-                vector.Y += -speed.Y + gravityConstant * gravityDeltaTime;
-            }
+            isJumping = true;
         }
 
-        if (vector.X < 0) vector.X = 0;
-        if (vector.X > window.ClientBounds.Width - texture.Width) vector.X = window.ClientBounds.Width - texture.Width;
-        if (vector.Y < 0) vector.Y = 0;
-        if (vector.Y > window.ClientBounds.Height - texture.Height)
+        if (isJumping)
         {
-            vector.Y = window.ClientBounds.Height - texture.Height;
-            if (isJumping)
-            {
-                isJumping = false;
-                gravityDeltaTime = 0;
-            }
+            gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            vector.Y += -speed.Y + gravityConstant * gravityDeltaTime;
         }
+
 
         /* if (keyboardState.IsKeyDown(Keys.Å))
         {
@@ -125,6 +109,20 @@ class Player : PhysicalObject
             if (!b.IsAlive)
             {
                 bullets.Remove(b);
+            }
+        }
+    }
+
+    public void checkTouchable(float x, float y, float width, float height)
+    {
+        if (vector.Y > y - Height)
+        {
+            vector.Y = y - Height;
+            
+            if (isJumping)
+            {
+                isJumping = false;
+                gravityDeltaTime = 0;
             }
         }
     }
@@ -203,12 +201,5 @@ class Bullet : PhysicalObject
         {
             isAlive = false;
         }
-    }
-}
-
-class Raft : PhysicalObject
-{
-    public Raft(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y, speedX, speedY)
-    {
     }
 }

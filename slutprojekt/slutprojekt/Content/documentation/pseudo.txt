@@ -1,0 +1,6 @@
+* Kod för att spelaren ska kunna stå kvar på flotten
+    * GameElements
+        Om spelaren träffar flotten
+            Flytta position till till flotten
+        Om spelaren hoppar
+            Kolla om han träffar flotten

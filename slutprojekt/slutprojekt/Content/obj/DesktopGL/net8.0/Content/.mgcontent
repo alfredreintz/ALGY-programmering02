@@ -12,6 +12,7 @@
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/../../../../../../Downloads/characterWalkRight2.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/../../../../../../Downloads/characterWalkRight3.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/../../../../../../Downloads/characterWalkRight4.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/birds/pinkBird.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bullet.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/exit.png</File>
@@ -30,6 +31,7 @@
     <File>character/characterWalkRight2.png</File>
     <File>character/characterWalkRight3.png</File>
     <File>character/characterWalkRight4.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

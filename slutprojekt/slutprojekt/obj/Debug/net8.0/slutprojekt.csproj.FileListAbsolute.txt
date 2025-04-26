@@ -40,3 +40,4 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/raft.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/sea.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/sky.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/pinkBird.xnb

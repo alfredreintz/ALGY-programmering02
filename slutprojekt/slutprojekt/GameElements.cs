@@ -59,6 +59,8 @@ static class GameElements
         background = new GameObject(content.Load<Texture2D>("sky"), 0, 0);
         sea = new Sea(content.Load<Texture2D>("sea" ), 0, window.ClientBounds.Height - 80, 0, 0);
         
+        
+        
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft1"));
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft2"));
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft3"));
@@ -87,8 +89,13 @@ static class GameElements
     public static State RunUpdate(ContentManager content, GameWindow window, GameTime gameTime)
     {
         player.Update(window, gameTime);
+        player.checkTouchable(gameTime, raft);
         
-        player.checkTouchable(raft.X, raft.Y, raft.Width, raft.Height);
+        if (player.Y + player.Height > window.ClientBounds.Height - sea.Height)
+        {
+            player.IsAlive = false;
+            return State.Menu;
+        }
         
         return State.Run;
     }
@@ -111,7 +118,7 @@ static class GameElements
         player.Draw(spriteBatch);
         player.Walkcycle(gameTime, characterTexturesLeft, characterTexturesRight);
         raft.Draw(spriteBatch);
-        // sea.Draw(spriteBatch);
+        sea.Draw(spriteBatch);
     }
 
     private static void Reset(GameWindow window, ContentManager content)

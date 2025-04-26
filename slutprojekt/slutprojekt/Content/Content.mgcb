@@ -109,6 +109,18 @@
 /processorParam:TextureFormat=Color
 /build:../../../../../../Downloads/characterWalkRight4.png;character/characterWalkRight4.png
 
+#begin birds/pinkBird.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:birds/pinkBird.png
+
 #begin bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor

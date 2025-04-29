@@ -167,7 +167,6 @@ class Player : PhysicalObject
             if (vector.Y > otherObject.Y - otherObject.Height)
             {
                 fellOf = true;
-                ;
             }
         }
     }
@@ -211,7 +210,7 @@ class Player : PhysicalObject
             texture = texturesLeft[0];
         }
     }
-
+  
     public override void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(texture, vector, Color.White);
@@ -220,14 +219,20 @@ class Player : PhysicalObject
 
     public void Reset(float X, float Y, float speedX, float speedY)
     {
+        // Resettar variabler
         vector.X = X;
         vector.Y = Y;
         speed.X = speedX;
         speed.Y = speedY;
 
+        isFalling= false;
+        isJumping = false;
+        fellOf = false;
+        gravityDeltaTime = 0f;
+
         bullets.Clear();
         timeSinceLastBullet = 0;
-        points = 0;
+        // points = 0;
         isAlive = true;
     }
 }

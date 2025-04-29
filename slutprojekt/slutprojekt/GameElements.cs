@@ -24,6 +24,7 @@ static class GameElements
     private static Raft raft;
     private static GameObject background;
     private static Sea sea;
+    private static List<Enemy> enemies;
     
     public enum State
     {
@@ -54,12 +55,11 @@ static class GameElements
         menuPos.X = window.ClientBounds.Width / 2 - menuSprite.Width / 2;
         menuPos.Y = window.ClientBounds.Height / 2 - menuSprite.Height / 2;
 
-        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 280, 400, 9f, 20f, 70f, content.Load<Texture2D>("bullet"));
+        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 320, -1000, 9f, 20f, 70f, content.Load<Texture2D>("bullet"));
         raft = new Raft(content.Load<Texture2D>("raft" ), window.ClientBounds.Width / 2 - 616 / 2, window.ClientBounds.Height - 150, 0, 0);
-        background = new GameObject(content.Load<Texture2D>("sky"), 0, 0);
+        background = new GameObject(content.Load<Texture2D>("sky"), 0, -50);
         sea = new Sea(content.Load<Texture2D>("sea" ), 0, window.ClientBounds.Height - 80, 0, 0);
-        
-        
+        enemies = new List<Enemy>();
         
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft1"));
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft2"));
@@ -70,6 +70,20 @@ static class GameElements
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight2"));
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight3"));
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight4"));
+
+        Random rand = new Random();
+        Texture2D tmpSprite = content.Load<Texture2D>("birds/pinkBird");
+        int rndX;
+        float constY = 460f;
+        float tmpspeedX = 7f;
+        
+        for (int i = 0; i < 1; i++)
+        {
+            rndX = rand.Next(-2000, 500);
+
+            Enemy temp = new horizontalBird(tmpSprite, rndX, constY, tmpspeedX, 0);
+            enemies.Add(temp);
+        }
     }
 
     public static void UnloadContent()
@@ -91,9 +105,34 @@ static class GameElements
         player.Update(window, gameTime);
         player.checkTouchable(gameTime, raft);
         
-        if (player.Y + player.Height > window.ClientBounds.Height - sea.Height)
+        foreach (Enemy e in enemies.ToList())
+        {
+            foreach (Bullet b in player.Bullets)
+            {
+                if (e.CheckCollision(b))
+                {
+                    e.IsAlive = false;
+                    player.Points++;
+                }
+            }
+
+            if (e.IsAlive)
+            {
+                if (e.CheckCollision(player)) player.IsAlive = false;
+
+                e.Update(window);
+            }
+            else enemies.Remove(e);
+        }
+        
+        if (player.Y > window.ClientBounds.Height - sea.Height)
         {
             player.IsAlive = false;
+        }
+
+        if (!player.IsAlive)
+        {
+            Reset(window, content);
             return State.Menu;
         }
         
@@ -118,11 +157,12 @@ static class GameElements
         player.Draw(spriteBatch);
         player.Walkcycle(gameTime, characterTexturesLeft, characterTexturesRight);
         raft.Draw(spriteBatch);
+        foreach (Enemy e in enemies) e.Draw(spriteBatch);
         sea.Draw(spriteBatch);
     }
 
     private static void Reset(GameWindow window, ContentManager content)
     {
-        player.Reset(380, 400, 2.5f, 4.5f);
+        player.Reset(320, -1000, 9f, 20f);
     }
 }

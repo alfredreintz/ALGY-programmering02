@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/birds/pinkBird.png</SourceFile>
-  <SourceTime>2025-04-26T15:05:35.1242269+02:00</SourceTime>
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/birds/pinkBird (1).png</SourceFile>
+  <SourceTime>2025-05-02T20:55:54.4891533+02:00</SourceTime>
   <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bin/DesktopGL/Content/birds/pinkBird.xnb</DestFile>
-  <DestTime>2025-04-26T15:17:38.0254488+02:00</DestTime>
+  <DestTime>2025-05-03T15:27:12.3963538+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

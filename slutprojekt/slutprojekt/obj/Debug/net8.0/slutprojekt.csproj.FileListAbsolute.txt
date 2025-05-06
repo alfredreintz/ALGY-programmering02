@@ -41,3 +41,5 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/sea.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/sky.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/pinkBird.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/blueBird.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/greenBird.xnb

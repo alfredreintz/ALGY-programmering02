@@ -14,6 +14,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace slutprojekt;
 
+// Ärver från förälder
 class Player : PhysicalObject
 {
     private int points = 0;
@@ -30,6 +31,7 @@ class Player : PhysicalObject
     private float gravityDeltaTime;
     private bool fellOf;
 
+    // Lägger till gravitationskonstant och bullettexture
     public Player(Texture2D texture, float X, float Y, float speedX, float speedY, float gravityConstant,
         Texture2D bulletTexture) : base(
         texture, X, Y, speedX, speedY)
@@ -53,11 +55,11 @@ class Player : PhysicalObject
     public void Update(GameWindow window, GameTime gameTime)
     {
         KeyboardState keyboardState = Keyboard.GetState();
-        TouchCollection touchState = TouchPanel.GetState();
 
-        if (keyboardState.IsKeyDown(Keys.E)) this.isAlive = false;
+        if (keyboardState.IsKeyDown(Keys.K)) this.isAlive = false;
 
 
+        // Logik för att flytt spelaren i sidleds
         if (keyboardState.IsKeyDown(Keys.D))
         {
             vector.X += speed.X;
@@ -82,28 +84,32 @@ class Player : PhysicalObject
             movingDirection = '0';
         }
 
+        // Om man håller nere space och spelaren inte hoppar redaan
         if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
         {
             isJumping = true;
         }
 
+        // Om spelaren hoppar men faller inte (OBS! Spelaren faller då den ramlar av plattformen)
         if (isJumping && !isFalling)
         {
             gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             vector.Y += -speed.Y + gravityConstant * gravityDeltaTime;
         }
 
+        // Om spelaren faller
         if (isFalling)
         {
             gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             vector.Y += gravityConstant * gravityDeltaTime;
         }
 
+        // Gör så att spelaren kan skicka iväg bullets
         if (keyboardState.IsKeyDown(Keys.E))
         {
             if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 200)
             {
-                Bullet temp = new Bullet(bulletTexture, vector.X + texture.Width / 2, vector.Y);
+                Bullet temp = new Bullet(bulletTexture, vector.X + texture.Width / 2, vector.Y, 7.5f);
 
                 bullets.Add(temp);
 
@@ -111,6 +117,7 @@ class Player : PhysicalObject
             }
         }
 
+        // Loopar igenom och uppdaterar bullets
         foreach (Bullet b in bullets.ToList())
         {
             b.Update(gameTime);
@@ -171,19 +178,29 @@ class Player : PhysicalObject
         }
     }
 
+    /// <summary>
+    /// Ändrar texturer för karaktär när karaktären går
+    /// </summary>
+    /// <param name="gameTime">speltiden</param>
+    /// <param name="texturesLeft">Lista med texturer för gång åt vänster</param>
+    /// <param name="texturesRight">Lista med texturer för gång åt höger</param>
     public void Walkcycle(GameTime gameTime, List<Texture2D> texturesLeft, List<Texture2D> texturesRight)
     {
+        // Om spelaren rör sig åt vänster
         if (movingDirection == 'L')
         {
             textureDeltaTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
+            // Om index är för stort
             if (textureIndex == texturesLeft.Count - 1)
             {
                 textureIndex = 0;
             }
 
+            // Om 125 millisekunder eller mer har passerat
             if (textureDeltaTime > 125f)
             {
+                // Ändra texture
                 textureIndex++;
                 texture = texturesLeft[textureIndex];
                 textureDeltaTime = 0f;
@@ -239,11 +256,11 @@ class Player : PhysicalObject
 
 class Bullet : PhysicalObject
 {
-    public Bullet(Texture2D texture, float X, float Y) : base(texture, X, Y, 0, 3f)
+    public Bullet(Texture2D texture, float X, float Y, float bulletSpeedConst) : base(texture, X, Y, 0, 0)
     {
+        // Initialiserar logik för bullets
         MouseState mouseState = Mouse.GetState();
-        float bulletSpeedConst = 2.5f;
-
+        
         int mouseX = mouseState.X;
         int mouseY = mouseState.Y;
 
@@ -259,11 +276,6 @@ class Bullet : PhysicalObject
         speed.X *= bulletSpeedConst;
         speed.Y *= bulletSpeedConst;
 
-    }
-
-    public void initVelocity(PhysicalObject otherObject)
-    {
-        
     }
 
     public void Update(GameTime gameTime)

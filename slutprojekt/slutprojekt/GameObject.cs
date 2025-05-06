@@ -8,11 +8,13 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace slutprojekt;
 
+// Basklass
 class GameObject
 {
     protected Texture2D texture;
     protected Vector2 vector;
 
+    // Constructor för textur och koordinater
     public GameObject(Texture2D texture, float X, float Y)
     {
         this.texture = texture;
@@ -20,11 +22,13 @@ class GameObject
         this.vector.Y = Y;
     }
 
+    // Erbjuder barn att använda metod med samma logik
     public virtual void Draw(SpriteBatch spritebatch)
     {
         spritebatch.Draw(texture, vector, Color.White);
     }
 
+    // Set : Get
     public float X
     {
         get { return vector.X; }
@@ -50,6 +54,7 @@ abstract class MovingObject : GameObject
 {
     protected Vector2 speed;
 
+    // Samma som gameobjekt men lägger till hastighet i båda led
     public MovingObject(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y)
     {
         this.speed.X = speedX;
@@ -66,12 +71,19 @@ abstract class PhysicalObject : MovingObject
     {
     }
 
+    /// <summary>
+    /// Kollar om en kollision mellan två objekt sker
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns>Om objekten kolliderar eller inte</returns>
     public bool CheckCollision(PhysicalObject other)
     {
+        // Skapar två rektanglar med bredd och höjd som objekten
         Rectangle myRect = new Rectangle(Convert.ToInt32(X), Convert.ToInt32(Y), Convert.ToInt32(Width),
             Convert.ToInt32(Height));
         Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
             Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));
+        // Returnera kollision som true eller icke-kollision som false
         return myRect.Intersects(otherRect);
     }
 

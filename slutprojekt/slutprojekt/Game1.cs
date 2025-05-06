@@ -20,6 +20,7 @@ public class Game1 : Game
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        // Ändrar standardupplösning
         _graphics.PreferredBackBufferWidth = 1250;
         _graphics.PreferredBackBufferHeight = 720;
         _graphics.ApplyChanges();
@@ -27,6 +28,9 @@ public class Game1 : Game
         IsMouseVisible = true;
     }
 
+    /// <summary>
+    /// Laddar i logik för spelet
+    /// </summary>
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
@@ -35,6 +39,9 @@ public class Game1 : Game
         base.Initialize();
     }
 
+    /// <summary>
+    /// Laddar in textures, fonts osv. för spelet
+    /// </summary>
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -42,11 +49,18 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
     }
     
+    /// <summary>
+    /// Justerar logik innan speleet avslutas
+    /// </summary>
     protected override void UnloadContent()
     {
         GameElements.UnloadContent();
     }
 
+    /// <summary>
+    /// Uppdaterar logik för varje frame
+    /// </summary>
+    /// <param name="gameTime"></param>
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
@@ -55,9 +69,11 @@ public class Game1 : Game
 
         // TODO: Add your update logic here
 
+        // Loopar igenom alla states
         switch (GameElements.currentState)
         {
             case GameElements.State.Run:
+                // Skickar in spelaren i state
                 GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
                 break;
             case GameElements.State.Quit:
@@ -71,6 +87,10 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
+    /// <summary>
+    /// Ritar ut allt i spelet
+    /// </summary>
+    /// <param name="gameTime"></param>
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -79,9 +99,11 @@ public class Game1 : Game
         
         spriteBatch.Begin();
 
+        // Loopar igenom states
         switch (GameElements.currentState)
         {
             case GameElements.State.Run:
+                // Anropar metod för att rita ut passande teturer för state
                 GameElements.RunDraw(spriteBatch, gameTime);
                 break;
             case GameElements.State.Quit:

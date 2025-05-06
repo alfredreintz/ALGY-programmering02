@@ -109,7 +109,7 @@
 /processorParam:TextureFormat=Color
 /build:../../../../../../Downloads/characterWalkRight4.png;character/characterWalkRight4.png
 
-#begin birds/pinkBird.png
+#begin birds/blueBird.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,7 +119,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:birds/pinkBird.png
+/build:birds/blueBird.png
+
+#begin birds/greenBird.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:birds/greenBird.png
+
+#begin birds/pinkBird (1).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:birds/pinkBird (1).png;birds/pinkBird.png
 
 #begin bullet.png
 /importer:TextureImporter

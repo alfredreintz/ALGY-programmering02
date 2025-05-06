@@ -13,6 +13,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace slutprojekt;
 
+// Ärver inte från någon
 class MenuItem
 {
     private Texture2D texture;
@@ -42,7 +43,8 @@ class MenuItem
     }
 }
 
-class   Menu
+// Ärver inte från någon förälder
+class Menu
 {
     private List<MenuItem> menu;
     private int selected = 0;
@@ -57,6 +59,11 @@ class   Menu
         this.defaultMenuState = defaultMenuState;
     }
 
+    /// <summary>
+    /// Lägger till item i menyn
+    /// </summary>
+    /// <param name="itemtexture">Texture för item</param>
+    /// <param name="state">State</param>
     public void AddItem(Texture2D itemtexture, int state)
     {
         float X = 0;
@@ -73,14 +80,18 @@ class   Menu
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
+        // Kollar om spelaren ändrat menyval nyss, då får den vänta lite
         if (lastChange + 130 < gameTime.TotalGameTime.TotalMilliseconds)
         {
+            // Om spelaren vill ändra alternativ
             if (keyboardState.IsKeyDown(Keys.Down))
             {
+                // Gå ned ett steg
                 selected++;
 
                 if (selected > menu.Count - 1) selected = 0;
             }
+            // Vise versa
             if (keyboardState.IsKeyDown(Keys.Up))
             {
                 selected--;
@@ -94,8 +105,10 @@ class   Menu
             lastChange = gameTime.TotalGameTime.TotalMilliseconds;
         }
 
+        // Om spelaren vill in i alternativet
         if (keyboardState.IsKeyDown(Keys.Enter))
         {
+            // Returnera state
             return menu[selected].State;
         }
         
@@ -104,8 +117,10 @@ class   Menu
 
     public void Draw(SpriteBatch spriteBatch)
     {
+        // Loopar igenom alla menyalternativ
         for (int i = 0; i < menu.Count; i++)
         {
+            // Om spelaren har valt alternativet har den en annan färg
             if (i == selected) spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.Yellow);
             else spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.LightGray);
         }

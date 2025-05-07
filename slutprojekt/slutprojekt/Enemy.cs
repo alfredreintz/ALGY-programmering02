@@ -62,7 +62,7 @@ class HBird : Enemy
             // Skapar random koordinater för att slumpa position
             randX1 = rand.Next(-2000, -500);
             randX2 = rand.Next(window.ClientBounds.Width + 500, window.ClientBounds.Width + 2000);
-            randY1 = rand.Next((int)otherY - 50, (int)otherY);
+            randY1 = rand.Next((int)otherY - ((int)Height + 50), (int)otherY - (int)Height);
 
             randPos = rand.Next(0, 2);
 

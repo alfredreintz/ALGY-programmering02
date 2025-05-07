@@ -107,7 +107,7 @@ class Player : PhysicalObject
         // Gör så att spelaren kan skicka iväg bullets
         if (keyboardState.IsKeyDown(Keys.E))
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 200)
+            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 100)
             {
                 Bullet temp = new Bullet(bulletTexture, vector.X + texture.Width / 2, vector.Y, 7.5f);
 

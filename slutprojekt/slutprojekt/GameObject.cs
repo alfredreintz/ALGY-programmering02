@@ -76,11 +76,13 @@ abstract class PhysicalObject : MovingObject
     /// </summary>
     /// <param name="other"></param>
     /// <returns>Om objekten kolliderar eller inte</returns>
-    public bool CheckCollision(PhysicalObject other)
+    public virtual bool CheckCollision(PhysicalObject other)
     {
+        int narrowIndex = 5;
+        
         // Skapar två rektanglar med bredd och höjd som objekten
-        Rectangle myRect = new Rectangle(Convert.ToInt32(X), Convert.ToInt32(Y), Convert.ToInt32(Width),
-            Convert.ToInt32(Height));
+        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndex), Convert.ToInt32(Y + narrowIndex), Convert.ToInt32(Width - narrowIndex),
+            Convert.ToInt32(Height - narrowIndex));
         Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
             Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));
         // Returnera kollision som true eller icke-kollision som false

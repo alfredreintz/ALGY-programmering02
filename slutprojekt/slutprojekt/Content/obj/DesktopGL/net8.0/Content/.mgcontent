@@ -16,10 +16,12 @@
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/birds/greenBird.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/birds/pinkBird (1).png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bullet.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/Fonts/Arial32.spritefont</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/exit.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/highscore.png</File>
-    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/start.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/btnQuitGame.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/btnStartGame.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/btnViewHighscore.png</File>
+    <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menuBackground.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/raft.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/sea.png</File>
     <File>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/sky.png</File>
@@ -36,6 +38,8 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>birds/pinkBird.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

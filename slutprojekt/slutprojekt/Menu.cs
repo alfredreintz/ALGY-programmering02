@@ -64,12 +64,12 @@ class Menu
     /// </summary>
     /// <param name="itemtexture">Texture för item</param>
     /// <param name="state">State</param>
-    public void AddItem(Texture2D itemtexture, int state)
+    public void AddItem(Texture2D itemtexture, int state, GameWindow window)
     {
-        float X = 0;
-        float Y = +currentHeight;
+        float X = window.ClientBounds.Width / 2 - itemtexture.Width / 2;
+        float Y = window.ClientBounds.Height / 2 - 70 + currentHeight;
 
-        currentHeight += itemtexture.Height + 20;
+        currentHeight += itemtexture.Height - 10;
 
         MenuItem temp = new MenuItem(itemtexture, new Vector2(X, Y), state);
 
@@ -91,6 +91,7 @@ class Menu
 
                 if (selected > menu.Count - 1) selected = 0;
             }
+
             // Vise versa
             if (keyboardState.IsKeyDown(Keys.Up))
             {
@@ -111,7 +112,7 @@ class Menu
             // Returnera state
             return menu[selected].State;
         }
-        
+
         return defaultMenuState;
     }
 
@@ -121,8 +122,9 @@ class Menu
         for (int i = 0; i < menu.Count; i++)
         {
             // Om spelaren har valt alternativet har den en annan färg
-            if (i == selected) spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.Yellow);
-            else spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.LightGray);
+
+            if (i == selected) spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.Orange);
+            else spriteBatch.Draw(menu[i].Texture, menu[i].Position, Color.White);
         }
     }
 }

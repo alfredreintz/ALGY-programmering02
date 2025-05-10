@@ -38,11 +38,13 @@ static class GameElements
     private static Random rand = new Random();
     private static int spawnEnemy;
     private static float increaseChance;
-    private static int upperChanceLimit = 2002;
+    private static int upperChanceLimit;
     private static SpriteFont arial32;
     private static SpriteFont myFont;
     private static HighScore highscore;
     private static int highscorePoints;
+    private static Texture2D menuBackground;
+    private static int deltaPoints;
 
     // State
     public enum State
@@ -61,6 +63,7 @@ static class GameElements
     {
         // I denna metod brukar en stor del av den förberedande logiken att placeras
         // ... men eftersom nästan alla logik har tillhörande texturer ligger det i LoadContent
+        upperChanceLimit = 1002;
     }
 
     public static void LoadContent(ContentManager content, GameWindow window)
@@ -69,13 +72,12 @@ static class GameElements
 
         // Laddar in meny
         menu = new Menu((int)State.Menu);
-        menu.AddItem(content.Load<Texture2D>("menu/start"), (int)State.Run);
-        // menu.AddItem(content.Load<Texture2D>("menu/highscore"), (int)State.PrintHighScore);
-        menu.AddItem(content.Load<Texture2D>("menu/exit"), (int)State.Quit);
-
-        menuSprite = content.Load<Texture2D>("menu");
-        menuPos.X = window.ClientBounds.Width / 2 - menuSprite.Width / 2;
-        menuPos.Y = window.ClientBounds.Height / 2 - menuSprite.Height / 2;
+        
+        menu.AddItem(content.Load<Texture2D>("menu/btnStartGame"), (int)State.Run, window);
+        menu.AddItem(content.Load<Texture2D>("menu/btnViewHighscore"), (int)State.PrintHighScore, window);
+        menu.AddItem(content.Load<Texture2D>("menu/btnQuitGame"), (int)State.Quit, window);
+        
+        arial32 = content.Load<SpriteFont>("fonts/arial32");
 
         // Laddar in spelarobjekten
         player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 320, -1000, 9f, 20f, 70f,
@@ -96,6 +98,8 @@ static class GameElements
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight2"));
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight3"));
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight4"));
+        
+        menuBackground = content.Load<Texture2D>("menuBackground");
 
         // Laddar in sprite
         tmpSprite = content.Load<Texture2D>("birds/pinkBird");
@@ -128,6 +132,7 @@ static class GameElements
     /// <param name="spriteBatch">Möjliggjör för att kunna rita</param>
     public static void MenuDraw(SpriteBatch spriteBatch)
     {
+        spriteBatch.Draw(menuBackground, new Vector2(0, 0), Color.White);
         menu.Draw(spriteBatch);
     }
 
@@ -142,7 +147,7 @@ static class GameElements
     {
         player.Update(window, gameTime);
         player.checkTouchable(gameTime, raft);
-
+        
         increaseChance += 0.01f;
 
         if (increaseChance % 10 == 0)
@@ -163,8 +168,9 @@ static class GameElements
                 {
                     // Enemien dör
                     e.IsAlive = false;
-                    spawnEnemy = 1;
+                    spawnEnemy = rand.Next(1, 4);
                     player.Points++;
+                    upperChanceLimit -= 3;
                 }
             }
 
@@ -182,7 +188,7 @@ static class GameElements
             else enemies.Remove(e);
         }
 
-        if (spawnEnemy == 1)
+        /*if (spawnEnemy == 1)
         {
             tmpSprite = content.Load<Texture2D>("birds/pinkBird");
 
@@ -195,8 +201,8 @@ static class GameElements
 
             Enemy temp = new VBird(tmpSprite, 10000, 10000, 0, 10000, 7f);
             enemies.Add(temp);
-        }
-        else if (spawnEnemy == 3 || spawnEnemy == 4 || spawnEnemy == 5)
+        }*/
+         if (spawnEnemy == 3 || spawnEnemy == 4 || spawnEnemy == 5)
         {
             tmpSprite = content.Load<Texture2D>("birds/greenBird");
 
@@ -206,7 +212,7 @@ static class GameElements
 
         // Om spelaren hamnar under hasnivån
         if (player.Y > window.ClientBounds.Height - sea.Height) player.IsAlive = false;
-
+        
         // Om spelaren är död
         if (!player.IsAlive)
         {
@@ -244,6 +250,20 @@ static class GameElements
         // Loopar igenom varje enemy
         foreach (Enemy e in enemies) e.Draw(spriteBatch);
         sea.Draw(spriteBatch);
+        spriteBatch.DrawString(arial32, "Points: " + player.Points, new Vector2(0, 0), Color.White);
+    }
+    
+    public static State HighScoreUpdate(GameTime gameTime)
+    {
+        KeyboardState keyboardState = Keyboard.GetState();
+        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
+
+        return State.PrintHighScore;
+    }
+
+    public static void HighScoreDraw(SpriteBatch spriteBatch)
+    {
+        highscore.PrintDraw(spriteBatch, myFont);
     }
 
     /// <summary>

@@ -26,8 +26,7 @@ abstract class Enemy : PhysicalObject
     }
 
     public abstract void setRandPosition(GameWindow window, float x1, float x2, float otherY);
-
-
+    
     public bool IsAlive
     {
         get { return isAlive; }
@@ -147,7 +146,7 @@ class DBird : Enemy
     public override void setRandPosition(GameWindow window, float x1, float x2, float otherY)
     {
         // Om objektet är under skärmen
-        if (vector.Y > window.ClientBounds.Height)
+        if (vector.Y > window.ClientBounds.Height || vector.X > window.ClientBounds.Width && speed.X > 0 || vector.X < 0 - Width && speed.X < 0)
         {
             randX1 = rand.Next((int)x1 - 2000, (int)x1);
             randX2 = rand.Next((int)x2, (int)x2 + 2000);
@@ -191,5 +190,26 @@ class DBird : Enemy
         {
             spriteBatch.Draw(texture, vector, null, Color.White, rotation, origin, 1f, SpriteEffects.FlipHorizontally, 0f);
         }
+    }
+    
+    public override bool CheckCollision(PhysicalObject other)
+    {
+        int narrowIndexX;
+        if (speed.X > 0)
+        {
+            narrowIndexX = 20;
+        }
+        else
+        {
+            narrowIndexX = -20;
+        }
+        
+        // Skapar två rektanglar med bredd och höjd som objekten
+        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndexX), Convert.ToInt32(Y - 70), Convert.ToInt32(Width - 20),
+            Convert.ToInt32(Height - 30));
+        Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
+            Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));
+        // Returnera kollision som true eller icke-kollision som false
+        return myRect.Intersects(otherRect);
     }
 }

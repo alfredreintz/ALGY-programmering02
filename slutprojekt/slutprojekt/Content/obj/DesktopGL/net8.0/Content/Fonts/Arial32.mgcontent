@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/Fonts/Arial32.spritefont</SourceFile>
+  <SourceTime>2025-05-08T12:29:41.3246775+02:00</SourceTime>
+  <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bin/DesktopGL/Content/Fonts/Arial32.xnb</DestFile>
+  <DestTime>2025-05-08T12:29:44.4024272+02:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2024-08-16T19:05:56+02:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

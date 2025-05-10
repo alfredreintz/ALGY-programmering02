@@ -107,7 +107,7 @@ class Player : PhysicalObject
         // Gör så att spelaren kan skicka iväg bullets
         if (keyboardState.IsKeyDown(Keys.E))
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 100)
+            if (gameTime.TotalGameTime.TotalMilliseconds > timeSinceLastBullet + 100u)
             {
                 Bullet temp = new Bullet(bulletTexture, vector.X + texture.Width / 2, vector.Y, 7.5f);
 
@@ -120,7 +120,7 @@ class Player : PhysicalObject
         // Loopar igenom och uppdaterar bullets
         foreach (Bullet b in bullets.ToList())
         {
-            b.Update(gameTime);
+            b.Update(window, gameTime);
 
             if (!b.IsAlive)
             {
@@ -278,12 +278,12 @@ class Bullet : PhysicalObject
 
     }
 
-    public void Update(GameTime gameTime)
+    public void Update(GameWindow window, GameTime gameTime)
     {
         vector.X += speed.X;
         vector.Y += speed.Y;
 
-        if (vector.Y < 0)
+        if (vector.Y < 0 || vector.Y > window.ClientBounds.Height || vector.X < 0 || vector.X > window.ClientBounds.Width)
         {
             isAlive = false;
         }

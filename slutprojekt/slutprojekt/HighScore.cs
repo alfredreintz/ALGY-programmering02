@@ -121,6 +121,7 @@ class HighScore
         }
     }
 
+    /*
     // =======================================================================
     // CheckKey(), kontrollerar om en viss tangent har tryckts och huruvida
     // det har g�tt lagomt l�ng tid (130ms) sedan tidigare tryck av samma
@@ -146,7 +147,7 @@ class HighScore
         // Just den tangenten (key) trycktes INTE ned, eller s� trycktes den
         // ned alldeles nyligen (mindre �n 130ms):
         return false;
-    }
+    }*/
 
     // =======================================================================
     // PrintDraw(), metod f�r att skriva ut listan. Det finns ingen
@@ -161,6 +162,7 @@ class HighScore
         spriteBatch.DrawString(font, text, Vector2.Zero, Color.White);
     }
 
+    /*
     // =======================================================================
     // EnterUpdate(), h�r matar anv�ndaren in sitt anv�ndarnamn. Precis som
     // klassiska gamla arkadspel kan man ha tre tecken A-Z i sitt namn. Detta
@@ -226,6 +228,7 @@ class HighScore
         string text = "ENTER NAME:" + name + currentChar;
         spriteBatch.DrawString(font, text, Vector2.Zero, Color.White);
     }
+*/
 
     // =======================================================================
     // SaveToFile(), spara till fil.

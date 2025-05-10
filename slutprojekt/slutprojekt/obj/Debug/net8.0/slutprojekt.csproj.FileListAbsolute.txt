@@ -32,9 +32,6 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/character/characterWalkRight2.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/character/characterWalkRight3.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/character/characterWalkRight4.xnb
-/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/exit.xnb
-/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/highscore.xnb
-/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/start.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/bullet.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/raft.xnb
@@ -43,3 +40,9 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/pinkBird.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/blueBird.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/birds/greenBird.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/Fonts/Arial32.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/backgroundImg.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/btnQuitGame.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/btnStartGame.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/btnViewHighscore.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menuBackground.xnb

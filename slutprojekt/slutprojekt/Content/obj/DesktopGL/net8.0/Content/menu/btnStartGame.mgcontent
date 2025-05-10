@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/highscore.png</SourceFile>
-  <SourceTime>2013-07-08T15:09:32+02:00</SourceTime>
-  <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bin/DesktopGL/Content/menu/highscore.xnb</DestFile>
-  <DestTime>2025-04-11T12:26:33.3757071+02:00</DestTime>
+  <SourceFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/menu/btnStartGame.png</SourceFile>
+  <SourceTime>2025-05-09T12:00:43.7278832+02:00</SourceTime>
+  <DestFile>/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/Content/bin/DesktopGL/Content/menu/btnStartGame.xnb</DestFile>
+  <DestTime>2025-05-09T12:05:38.2575286+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -80,10 +80,10 @@ static class GameElements
         arial32 = content.Load<SpriteFont>("fonts/arial32");
 
         // Laddar in spelarobjekten
-        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), 320, -1000, 9f, 20f, 70f,
-            content.Load<Texture2D>("bullet"));
         raft = new Raft(content.Load<Texture2D>("raft"), window.ClientBounds.Width / 2 - 616 / 2,
             window.ClientBounds.Height - 150, 0, 0);
+        player = new Player(content.Load<Texture2D>("character/characterWalkLeft1"), rand.Next((int)raft.X, (int)(raft.X + raft.Width)), -1000, 9f, 20f, 70f,
+            content.Load<Texture2D>("bullet"));
         background = new GameObject(content.Load<Texture2D>("sky"), 0, -50);
         sea = new Sea(content.Load<Texture2D>("sea"), 0, window.ClientBounds.Height - 80, 0, 0);
         enemies = new List<Enemy>();
@@ -170,7 +170,7 @@ static class GameElements
                     e.IsAlive = false;
                     spawnEnemy = rand.Next(1, 4);
                     player.Points++;
-                    upperChanceLimit -= 3;
+                    upperChanceLimit -= 4;
                 }
             }
 
@@ -188,7 +188,7 @@ static class GameElements
             else enemies.Remove(e);
         }
 
-        /*if (spawnEnemy == 1)
+        if (spawnEnemy == 1)
         {
             tmpSprite = content.Load<Texture2D>("birds/pinkBird");
 
@@ -199,10 +199,10 @@ static class GameElements
         {
             tmpSprite = content.Load<Texture2D>("birds/blueBird");
 
-            Enemy temp = new VBird(tmpSprite, 10000, 10000, 0, 10000, 7f);
+            Enemy temp = new VBird(tmpSprite, 10000, 10000, 0, 10000, 4f);
             enemies.Add(temp);
-        }*/
-         if (spawnEnemy == 3 || spawnEnemy == 4 || spawnEnemy == 5)
+        }
+        else if (spawnEnemy == 3 || spawnEnemy == 4 || spawnEnemy == 5)
         {
             tmpSprite = content.Load<Texture2D>("birds/greenBird");
 
@@ -221,18 +221,6 @@ static class GameElements
         }
 
         return State.Run;
-    }
-
-    public static State AboutUpdate()
-    {
-        KeyboardState keyboardState = Keyboard.GetState();
-        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
-
-        return State.About;
-    }
-
-    public static void AboutDraw(SpriteBatch spriteBatch)
-    {
     }
 
     /// <summary>
@@ -273,7 +261,7 @@ static class GameElements
     /// <param name="content">Content i spelet</param>
     private static void Reset(GameWindow window, ContentManager content)
     {
-        player.Reset(320, -1000, 9f, 20f);
+        player.Reset(rand.Next((int)raft.X, (int)(raft.X + raft.Width)), -1000, 9f, 20f);
         enemies.Clear();
         
         tmpSprite = content.Load<Texture2D>("birds/pinkBird");

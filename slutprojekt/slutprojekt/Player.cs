@@ -56,7 +56,7 @@ class Player : PhysicalObject
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
-        if (keyboardState.IsKeyDown(Keys.K)) this.isAlive = false;
+        if (keyboardState.IsKeyDown(Keys.Escape)) this.isAlive = false;
 
 
         // Logik för att flytt spelaren i sidleds

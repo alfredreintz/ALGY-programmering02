@@ -55,7 +55,7 @@ abstract class MovingObject : GameObject
     protected Vector2 speed;
 
     // Samma som gameobjekt men lägger till hastighet i båda led
-    public MovingObject(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y)
+    protected MovingObject(Texture2D texture, float X, float Y, float speedX, float speedY) : base(texture, X, Y)
     {
         this.speed.X = speedX;
         this.speed.Y = speedY;

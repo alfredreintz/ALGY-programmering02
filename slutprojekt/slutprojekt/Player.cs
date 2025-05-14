@@ -25,20 +25,20 @@ class Player : PhysicalObject
     private char movingDirection;
     private int textureIndex = 0;
     private float textureDeltaTime = 125f;
-    private float gravityConstant;
+    private float _gravityConst;
     private bool isJumping;
     private bool isFalling;
     private float gravityDeltaTime;
     private bool fellOf;
 
     // Lägger till gravitationskonstant och bullettexture
-    public Player(Texture2D texture, float X, float Y, float speedX, float speedY, float gravityConstant,
+    public Player(Texture2D texture, float X, float Y, float speedX, float speedY, float gravityConst,
         Texture2D bulletTexture) : base(
         texture, X, Y, speedX, speedY)
     {
         bullets = new List<Bullet>();
         this.bulletTexture = bulletTexture;
-        this.gravityConstant = gravityConstant;
+        this._gravityConst = gravityConst;
     }
 
     public int Points
@@ -91,14 +91,14 @@ class Player : PhysicalObject
         if (isJumping && !isFalling)
         {
             gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            vector.Y += -speed.Y + gravityConstant * gravityDeltaTime;
+            vector.Y += -speed.Y + _gravityConst * gravityDeltaTime;
         }
 
         // Om spelaren faller
         if (isFalling)
         {
             gravityDeltaTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            vector.Y += gravityConstant * gravityDeltaTime;
+            vector.Y += _gravityConst * gravityDeltaTime;
         }
 
         // Gör så att spelaren kan skicka iväg bullets

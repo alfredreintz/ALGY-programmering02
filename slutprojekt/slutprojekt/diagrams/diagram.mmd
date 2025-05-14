@@ -28,24 +28,24 @@ classDiagram
     }
 
     class Player {
-        - Texture2D bulletTexture;
-        - double timeSinceLastBullet = 0;
-        - bool isMoving = false;
-        - char movingDirection;
-        - int textureIndex = 0;
-        - float textureDeltaTime = 125f;
-        - float gravityConstant;
-        - bool isJumping;
-        - bool isFalling;
-        - float gravityDeltaTime;
-        - bool fellOf;
+        - Texture2D bulletTexture
+        - double timeSinceLastBullet
+        - bool isMoving
+        - char movingDirection
+        - int textureIndex
+        - float textureDeltaTime
+        - float gravityConstant
+        - bool isJumping
+        - bool isFalling
+        - float gravityDeltaTime
+        - bool fellOf
         + int Points
         + List<Bullet> Bullets
-        + Player(Texture2D texture, float X, float Y, float speedX, float speedY, float gravityConstant, Texture2D bulletTexture)
+        + Player(Texture2D texture, float X, float Y, float speedX, float speedY, float gravityConst, Texture2D bulletTexture)
         + void Update(GameWindow window, GameTime gameTime)
         + void checkTouchable(PhysicalObject otherObject)
-        + void Draw(SpriteBatch spriteBatch)
         + void Walkcycle(GameTime gameTime, List<Texture2D> texturesLeft, List<Texture2D> texturesRight)
+        + void Draw(SpriteBatch spriteBatch)
         + void Reset(float X, float Y, float speedX, float speedY)
     }
 
@@ -55,28 +55,37 @@ classDiagram
     }
 
     class Enemy {
+        # static Random rand
+        # int randX1
+        # int randX2
+        # int randY1
+        # int randY2
+        # int randPos
         + Enemy(Texture2D texture, float X, float Y, float speedX, float speedY)
         + void setRandPosition(GameWindow window, float x1, float x2, float otherY)*
         + void Update(GameWindow window);
     }
 
     class HBird {
+        - float speedConstX
         + Enemy(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConstX)
         + void setRandPosition(GameWindow window, float x1, float x2, float otherY)
-        + void Update(GameWindow window);
+        + void Draw(SpriteBatch spriteBatch)
     }
 
     class VBird {
+        - float speedConstY
         + Enemy(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConstY)
         + void setRandPosition(GameWindow window, float x1, float x2, float otherY)
-        + void Update(GameWindow window);
+        + void Draw(SpriteBatch spriteBatch)
     }
 
     class DBird {
+        - float speedConst
         + Enemy(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConst)
         + void setRandPosition(GameWindow window, float x1, float x2, float otherY)
-        + void Update(GameWindow window);
         + void CheckCollision(PhysicalObject other)
+        + void Draw(SpriteBatch spriteBatch)
     }
     
     class Sea {

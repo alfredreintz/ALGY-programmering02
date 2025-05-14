@@ -101,13 +101,13 @@ class HBird : Enemy
 
 class VBird : Enemy
 {
-    private float speedConstX;
+    private float speedConstY;
 
     // Lägger till en konstant för x-hastighet
-    public VBird(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConstX) : base(texture, X,
+    public VBird(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConstY) : base(texture, X,
         Y, speedX, speedY)
     {
-        this.speedConstX = speedConstX;
+        this.speedConstY = speedConstY;
     }
 
     public override void setRandPosition(GameWindow window, float x1, float x2, float otherY)
@@ -118,7 +118,7 @@ class VBird : Enemy
             randX1 = rand.Next((int)x1, (int)x2);
             randY1 = rand.Next(-2000, -500);
 
-            speed.Y = speedConstX * rand.Next(10, 30) / 10;
+            speed.Y = speedConstY * rand.Next(10, 30) / 10;
 
             vector.X = randX1;
             vector.Y = randY1;
@@ -134,13 +134,13 @@ class VBird : Enemy
 
 class DBird : Enemy
 {
-    private float speedConstX;
+    private float speedConst;
 
     // Lägger till en konstant för x-hastighet
-    public DBird(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConstX) : base(texture, X,
+    public DBird(Texture2D texture, float X, float Y, float speedX, float speedY, float speedConst) : base(texture, X,
         Y, speedX, speedY)
     {
-        this.speedConstX = speedConstX;
+        this.speedConst = speedConst;
     }
 
     public override void setRandPosition(GameWindow window, float x1, float x2, float otherY)
@@ -153,8 +153,8 @@ class DBird : Enemy
 
             randY1 = rand.Next(-2000, -500);
 
-            speed.X = speedConstX * rand.Next(3, 10) / 10;
-            speed.Y = speedConstX * rand.Next(3, 10) / 10;
+            speed.X = speedConst * rand.Next(3, 10) / 10;
+            speed.Y = speedConst * rand.Next(3, 10) / 10;
             ;
 
             randPos = rand.Next(0, 2);
@@ -197,7 +197,7 @@ class DBird : Enemy
         int narrowIndexX;
         if (speed.X > 0)
         {
-            narrowIndexX = 20;
+            narrowIndexX = 25;
         }
         else
         {
@@ -205,7 +205,7 @@ class DBird : Enemy
         }
         
         // Skapar två rektanglar med bredd och höjd som objekten
-        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndexX), Convert.ToInt32(Y - 70), Convert.ToInt32(Width - 20),
+        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndexX), Convert.ToInt32(Y - 60), Convert.ToInt32(Width),
             Convert.ToInt32(Height - 30));
         Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
             Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));

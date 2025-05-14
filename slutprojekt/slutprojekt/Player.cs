@@ -56,9 +56,6 @@ class Player : PhysicalObject
     {
         KeyboardState keyboardState = Keyboard.GetState();
 
-        if (keyboardState.IsKeyDown(Keys.Escape)) this.isAlive = false;
-
-
         // Logik för att flytt spelaren i sidleds
         if (keyboardState.IsKeyDown(Keys.D))
         {
@@ -120,7 +117,7 @@ class Player : PhysicalObject
         // Loopar igenom och uppdaterar bullets
         foreach (Bullet b in bullets.ToList())
         {
-            b.Update(window, gameTime);
+            b.Update(window);
 
             if (!b.IsAlive)
             {
@@ -139,7 +136,7 @@ class Player : PhysicalObject
     /// <param name="height">Ett annat objekts höjd</param>
     /// Denna metoden var väldigt klurig för mig att lista ut och det finns definitivt finare och mer läsbara sätt att lösa det på
     /// Huvudsaken är att den fungerar
-    public void checkTouchable(GameTime gameTime, PhysicalObject otherObject)
+    public void checkTouchable(PhysicalObject otherObject)
     {
         // Om spelaren befinner sig inom gränserna för plattformen
         if (!fellOf && vector.Y >= otherObject.Y - Height && vector.X > otherObject.X - texture.Width &&
@@ -249,7 +246,7 @@ class Player : PhysicalObject
 
         bullets.Clear();
         timeSinceLastBullet = 0;
-        // points = 0;
+        points = 0;
         isAlive = true;
     }
 }
@@ -278,11 +275,12 @@ class Bullet : PhysicalObject
 
     }
 
-    public void Update(GameWindow window, GameTime gameTime)
+    public void Update(GameWindow window)
     {
         vector.X += speed.X;
         vector.Y += speed.Y;
 
+        // Om skottet hamnar utanför skärmed så dör det
         if (vector.Y < 0 || vector.Y > window.ClientBounds.Height || vector.X < 0 || vector.X > window.ClientBounds.Width)
         {
             isAlive = false;

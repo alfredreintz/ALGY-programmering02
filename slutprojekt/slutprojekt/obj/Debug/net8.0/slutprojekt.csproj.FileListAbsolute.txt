@@ -46,3 +46,4 @@
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/btnStartGame.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menu/btnViewHighscore.xnb
 /Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/menuBackground.xnb
+/Users/alfredreintz/Documents/GitHub/programmering02/slutprojekt/slutprojekt/bin/Debug/net8.0/Content/highscoreBackground.xnb

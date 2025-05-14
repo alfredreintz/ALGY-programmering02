@@ -1,0 +1,4 @@
+AAA:10
+AAA:9
+AAA:5
+AAA:1

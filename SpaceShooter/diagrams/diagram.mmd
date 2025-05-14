@@ -46,11 +46,12 @@ classDiagram
         + Player(Texture2D texture, float X, float Y, float speedX, float speedY, Texture2D bulletTexture)
         + void Update(GameWindow window, GameTime gameTime)
         + void Draw(SpriteBatch spriteBatch)
+        + void Reset(float X, float Y, float speedX, float speedY)
     }
 
     class Enemy {
-        Enemy(Texture2D texture, float X, float Y, float speedX, float speedY)
-        void Update(GameWindow window);
+        + Enemy(Texture2D texture, float X, float Y, float speedX, float speedY)
+        + void Update(GameWindow window);
     }
 
     class Mine {

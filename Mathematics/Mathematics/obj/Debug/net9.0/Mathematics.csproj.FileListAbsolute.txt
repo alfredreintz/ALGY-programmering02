@@ -1,0 +1,15 @@
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/bin/Debug/net9.0/Mathematics
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/bin/Debug/net9.0/Mathematics.deps.json
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/bin/Debug/net9.0/Mathematics.runtimeconfig.json
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/bin/Debug/net9.0/Mathematics.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/bin/Debug/net9.0/Mathematics.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.AssemblyInfoInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.AssemblyInfo.cs
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.csproj.CoreCompileInputs.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.sourcelink.json
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/refint/Mathematics.dll
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.pdb
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/Mathematics.genruntimeconfig.cache
+/Users/alfredreintz/Documents/GitHub/programmering02/Mathematics/Mathematics/obj/Debug/net9.0/ref/Mathematics.dll

@@ -63,18 +63,19 @@ public class Game1 : Game
     /// <param name="gameTime"></param>
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Back))
-            Exit();
 
         // TODO: Add your update logic here
 
-        // Loopar igenom alla states
         switch (GameElements.currentState)
         {
             case GameElements.State.Run:
-                // Skickar in spelaren i state
                 GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
+                break;
+            case GameElements.State.PrintHighScore:
+                GameElements.currentState = GameElements.HighScoreUpdate(gameTime);
+                break;
+            case GameElements.State.EnterHighScore:
+                GameElements.currentState = GameElements.HighScoreUpdate(gameTime);
                 break;
             case GameElements.State.Quit:
                 this.Exit();
@@ -83,7 +84,7 @@ public class Game1 : Game
                 GameElements.currentState = GameElements.MenuUpdate(gameTime);
                 break;
         }
-
+        
         base.Update(gameTime);
     }
 
@@ -94,17 +95,19 @@ public class Game1 : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        // TODO: Add your drawing code here
         
         spriteBatch.Begin();
 
-        // Loopar igenom states
         switch (GameElements.currentState)
         {
             case GameElements.State.Run:
-                // Anropar metod för att rita ut passande teturer för state
                 GameElements.RunDraw(spriteBatch, gameTime);
+                break;
+            case GameElements.State.PrintHighScore:
+                GameElements.HighScoreDraw(spriteBatch);
+                break;
+            case GameElements.State.EnterHighScore:
+                GameElements.HighScoreDraw(spriteBatch);
                 break;
             case GameElements.State.Quit:
                 this.Exit();
@@ -115,7 +118,7 @@ public class Game1 : Game
         }
         
         spriteBatch.End();
-
+        
         base.Draw(gameTime);
     }
 }

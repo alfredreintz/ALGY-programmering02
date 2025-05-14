@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -35,16 +36,19 @@ static class GameElements
     private static float randSpeedY;
     private static int randPos;
     private static List<Enemy> enemies;
-    private static Random rand = new Random();
+    private static Random rand;
     private static int spawnEnemy;
-    private static float increaseChance;
+    private static double increaseChanceDeltaTime;
     private static int upperChanceLimit;
     private static SpriteFont arial32;
     private static SpriteFont myFont;
     private static HighScore highscore;
     private static int highscorePoints;
     private static Texture2D menuBackground;
+    private static Texture2D highscoreBackground;
     private static int deltaPoints;
+    private static string HSFileName;
+    private static double pointDeltaTime;
 
     // State
     public enum State
@@ -53,7 +57,6 @@ static class GameElements
         Run,
         PrintHighScore,
         EnterHighScore,
-        About,
         Quit
     };
 
@@ -64,11 +67,16 @@ static class GameElements
         // I denna metod brukar en stor del av den förberedande logiken att placeras
         // ... men eftersom nästan alla logik har tillhörande texturer ligger det i LoadContent
         upperChanceLimit = 1002;
+        highscore = new HighScore(5);
     }
 
     public static void LoadContent(ContentManager content, GameWindow window)
     {
         // TODO: use this.Content to load your game content here
+        HSFileName = "HS1.txt";
+        highscore.LoadFromFile(HSFileName);
+
+        rand = new Random();
 
         // Laddar in meny
         menu = new Menu((int)State.Menu);
@@ -87,6 +95,9 @@ static class GameElements
         background = new GameObject(content.Load<Texture2D>("sky"), 0, -50);
         sea = new Sea(content.Load<Texture2D>("sea"), 0, window.ClientBounds.Height - 80, 0, 0);
         enemies = new List<Enemy>();
+        menuBackground = content.Load<Texture2D>("menuBackground");
+        highscoreBackground = content.Load<Texture2D>("highscoreBackground");
+    
 
         // Lägger till walkcycle-sprites i lista
         characterTexturesLeft.Add(content.Load<Texture2D>("character/characterWalkLeft1"));
@@ -99,7 +110,6 @@ static class GameElements
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight3"));
         characterTexturesRight.Add(content.Load<Texture2D>("character/characterWalkRight4"));
         
-        menuBackground = content.Load<Texture2D>("menuBackground");
 
         // Laddar in sprite
         tmpSprite = content.Load<Texture2D>("birds/pinkBird");
@@ -107,6 +117,8 @@ static class GameElements
         // Sätter in värdet som automatiskt triggar en tillrättalagd utplasering och hastighet hos objektet
         tempEnemy = new HBird(tmpSprite, 10000, 10000, 10000, 0, 7f);
         enemies.Add(tempEnemy);
+        
+        myFont = content.Load<SpriteFont>("fonts/arial32");
     }
 
     /// <summary>
@@ -114,6 +126,7 @@ static class GameElements
     /// </summary>
     public static void UnloadContent()
     {
+        highscore.SaveToFile(HSFileName);
     }
 
     /// <summary>
@@ -146,12 +159,23 @@ static class GameElements
     public static State RunUpdate(ContentManager content, GameWindow window, GameTime gameTime)
     {
         player.Update(window, gameTime);
-        player.checkTouchable(gameTime, raft);
+        player.checkTouchable(raft);
         
-        increaseChance += 0.01f;
+        // Lägger till värde för varje loop mätt i sekunder
+        pointDeltaTime += gameTime.ElapsedGameTime.TotalSeconds;
+        increaseChanceDeltaTime += gameTime.ElapsedGameTime.TotalSeconds;
 
-        if (increaseChance % 10 == 0)
+        if (pointDeltaTime > 2)
         {
+            // Lägger till poäng och resettar
+            pointDeltaTime = 0;
+            player.Points++;
+        }
+
+        if (increaseChanceDeltaTime > 0.1)
+        {
+            // Ökar chansen att enemies spawnar och resettar
+            increaseChanceDeltaTime = 0;
             upperChanceLimit--;
         }
 
@@ -216,8 +240,9 @@ static class GameElements
         // Om spelaren är död
         if (!player.IsAlive)
         {
+            highscorePoints = player.Points;
             Reset(window, content);
-            return State.Menu;
+            return State.EnterHighScore;
         }
 
         return State.Run;
@@ -232,9 +257,9 @@ static class GameElements
     {
         // Ritar ut alla texturer genom objektens metoder
         background.Draw(spriteBatch);
+        raft.Draw(spriteBatch);
         player.Draw(spriteBatch);
         player.Walkcycle(gameTime, characterTexturesLeft, characterTexturesRight);
-        raft.Draw(spriteBatch);
         // Loopar igenom varje enemy
         foreach (Enemy e in enemies) e.Draw(spriteBatch);
         sea.Draw(spriteBatch);
@@ -243,15 +268,31 @@ static class GameElements
     
     public static State HighScoreUpdate(GameTime gameTime)
     {
-        KeyboardState keyboardState = Keyboard.GetState();
-        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
 
+        if (currentState == State.EnterHighScore)
+        {
+            if (highscore.EnterUpdate(gameTime, highscorePoints)) currentState = State.PrintHighScore;
+            else return State.EnterHighScore;
+        }
+        KeyboardState keyboardState = Keyboard.GetState();
+
+        if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
+                
         return State.PrintHighScore;
     }
 
     public static void HighScoreDraw(SpriteBatch spriteBatch)
     {
-        highscore.PrintDraw(spriteBatch, myFont);
+        spriteBatch.Draw(highscoreBackground, new Vector2(0, 0), Color.White);
+        switch (currentState)
+        {
+            case State.EnterHighScore:
+                highscore.EnterDraw(spriteBatch, myFont);
+                break;
+            default:
+                highscore.PrintDraw(spriteBatch, myFont);
+                break;
+        }
     }
 
     /// <summary>
@@ -269,6 +310,6 @@ static class GameElements
         enemies.Add(tempEnemy);
 
         upperChanceLimit = 2001;
-        increaseChance = 0; 
+        increaseChanceDeltaTime = 0; 
     }
 }

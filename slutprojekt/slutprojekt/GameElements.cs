@@ -115,6 +115,9 @@ static class GameElements
         tmpSprite = content.Load<Texture2D>("birds/pinkBird");
 
         // Sätter in värdet som automatiskt triggar en tillrättalagd utplasering och hastighet hos objektet
+        // Att sätta dessa variabler i construcorn är kanske inte så snyggt men det triggar objektet att placeras rätt
+        // Alternativet är att göra samma sak i konstruktorn som i update-metoden men det blir väldigt repititivt
+        // Detta fungerar och jag sparar väldigt mycket kod
         tempEnemy = new HBird(tmpSprite, 10000, 10000, 10000, 0, 7f);
         enemies.Add(tempEnemy);
         
@@ -142,7 +145,7 @@ static class GameElements
     /// <summary>
     /// Ritar ut menym
     /// </summary>
-    /// <param name="spriteBatch">Möjliggjör för att kunna rita</param>
+    /// <param name="spriteBatch">Inbyggt ritverktyg</param>
     public static void MenuDraw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(menuBackground, new Vector2(0, 0), Color.White);
@@ -212,8 +215,10 @@ static class GameElements
             else enemies.Remove(e);
         }
 
+        // Kollar random-värde
         if (spawnEnemy == 1)
         {
+            // Lägger till en fågel
             tmpSprite = content.Load<Texture2D>("birds/pinkBird");
 
             tempEnemy = new HBird(tmpSprite, 10000, 10000, 10000, 0, 7f);
@@ -226,7 +231,7 @@ static class GameElements
             Enemy temp = new VBird(tmpSprite, 10000, 10000, 0, 10000, 4f);
             enemies.Add(temp);
         }
-        else if (spawnEnemy == 3 || spawnEnemy == 4 || spawnEnemy == 5)
+        else if (spawnEnemy == 3)
         {
             tmpSprite = content.Load<Texture2D>("birds/greenBird");
 
@@ -251,7 +256,7 @@ static class GameElements
     /// <summary>
     /// Ritar ut när spelet körs
     /// </summary>
-    /// <param name="spriteBatch">Möjliggjör för att kunna rita</param>
+    /// <param name="spriteBatch">Inbyggt ritverktyg</param>
     /// <param name="gameTime">Speltiden</param>
     public static void RunDraw(SpriteBatch spriteBatch, GameTime gameTime)
     {
@@ -266,14 +271,22 @@ static class GameElements
         spriteBatch.DrawString(arial32, "Points: " + player.Points, new Vector2(0, 0), Color.White);
     }
     
+    /// <summary>
+    /// Uppdaterar highscore-vyn för spelaren
+    /// </summary>
+    /// <param name="gameTime">speltidn</param>
+    /// <returns>State</returns>
     public static State HighScoreUpdate(GameTime gameTime)
     {
-
+        // Kollar state
         if (currentState == State.EnterHighScore)
         {
+            // Skickar spelaren rätt
             if (highscore.EnterUpdate(gameTime, highscorePoints)) currentState = State.PrintHighScore;
             else return State.EnterHighScore;
         }
+        
+        // Då spelaren endast är i vyn för att se highscore-listan kan den gå ut genom knapptryck
         KeyboardState keyboardState = Keyboard.GetState();
 
         if (keyboardState.IsKeyDown(Keys.Escape)) return State.Menu;
@@ -281,6 +294,10 @@ static class GameElements
         return State.PrintHighScore;
     }
 
+    /// <summary>
+    /// Rita ut rätt delar för highscore
+    /// </summary>
+    /// <param name="spriteBatch">Inbyggt ritverktyg</param>
     public static void HighScoreDraw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(highscoreBackground, new Vector2(0, 0), Color.White);

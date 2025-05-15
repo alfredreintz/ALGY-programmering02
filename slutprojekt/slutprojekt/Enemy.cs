@@ -194,6 +194,7 @@ class DBird : Enemy
     
     public override bool CheckCollision(PhysicalObject other)
     {
+        // Skapar en marginal-variabel
         int narrowIndexX;
         if (speed.X > 0)
         {
@@ -205,7 +206,7 @@ class DBird : Enemy
         }
         
         // Skapar två rektanglar med bredd och höjd som objekten
-        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndexX), Convert.ToInt32(Y - 60), Convert.ToInt32(Width),
+        Rectangle myRect = new Rectangle(Convert.ToInt32(X + narrowIndexX), Convert.ToInt32(Y - 60), Convert.ToInt32(Width + 20),
             Convert.ToInt32(Height - 30));
         Rectangle otherRect = new Rectangle(Convert.ToInt32(other.X), Convert.ToInt32(other.Y),
             Convert.ToInt32(other.Width), Convert.ToInt32(other.Height));
